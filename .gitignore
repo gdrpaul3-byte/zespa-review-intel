@@ -1,0 +1,12 @@
+node_modules/
+.venv/
+.env
+.env.*
+__pycache__/
+*.pyc
+playwright-report/
+test-results/
+.DS_Store
+data/raw/*.html
+data/raw/*.png
+data/raw/*.har

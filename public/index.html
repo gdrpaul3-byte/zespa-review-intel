@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Zespa Review Intelligence</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700&display=swap");
+
+      :root {
+        --ink: oklch(18% 0.018 250);
+        --muted: oklch(48% 0.025 250);
+        --paper: oklch(97% 0.008 248);
+        --panel: oklch(99% 0.006 248);
+        --line: oklch(87% 0.018 248);
+        --steel: oklch(36% 0.07 245);
+        --signal: oklch(60% 0.16 34);
+        --cool: oklch(61% 0.11 202);
+        --green: oklch(58% 0.12 150);
+        --warn: oklch(65% 0.14 70);
+        --space-xs: 4px;
+        --space-sm: 8px;
+        --space-md: 12px;
+        --space-lg: 16px;
+        --space-xl: 24px;
+        --space-2xl: 32px;
+        --space-3xl: 48px;
+        color-scheme: light;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background:
+          linear-gradient(90deg, color-mix(in oklch, var(--line), transparent 70%) 1px, transparent 1px) 0 0 / 56px 56px,
+          linear-gradient(color-mix(in oklch, var(--line), transparent 72%) 1px, transparent 1px) 0 0 / 56px 56px,
+          var(--paper);
+        color: var(--ink);
+        font-family: "Noto Sans KR", sans-serif;
+        letter-spacing: 0;
+      }
+
+      .shell {
+        width: min(1440px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: var(--space-2xl) 0 var(--space-3xl);
+      }
+
+      header {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+        gap: var(--space-2xl);
+        align-items: end;
+        padding-bottom: var(--space-xl);
+        border-bottom: 1px solid var(--line);
+      }
+
+      h1,
+      h2,
+      h3,
+      .metric-value {
+        font-family: "Gabarito", "Noto Sans KR", sans-serif;
+      }
+
+      h1 {
+        max-width: 760px;
+        margin: 0;
+        font-size: clamp(2.25rem, 6vw, 5.25rem);
+        line-height: 0.94;
+        letter-spacing: 0;
+      }
+
+      .subhead {
+        max-width: 68ch;
+        margin: var(--space-lg) 0 0;
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.65;
+      }
+
+      .meta-panel {
+        display: grid;
+        gap: var(--space-md);
+        padding: var(--space-lg);
+        border: 1px solid var(--ink);
+        background: var(--panel);
+        box-shadow: 8px 8px 0 color-mix(in oklch, var(--steel), transparent 80%);
+      }
+
+      .meta-row,
+      .source-row,
+      .product-row {
+        display: flex;
+        justify-content: space-between;
+        gap: var(--space-lg);
+        align-items: baseline;
+      }
+
+      .label {
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .value {
+        font-weight: 700;
+        text-align: right;
+      }
+
+      .notice {
+        display: none;
+        margin-top: var(--space-xl);
+        padding: var(--space-lg);
+        border: 1px solid var(--warn);
+        background: color-mix(in oklch, var(--warn), white 82%);
+        font-weight: 700;
+      }
+
+      main {
+        display: grid;
+        gap: var(--space-2xl);
+        margin-top: var(--space-2xl);
+      }
+
+      section {
+        display: grid;
+        gap: var(--space-lg);
+      }
+
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        gap: var(--space-xl);
+        align-items: end;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: 1.35rem;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: var(--space-lg);
+      }
+
+      .brand-card,
+      .panel {
+        background: var(--panel);
+        border: 1px solid var(--line);
+      }
+
+      .brand-card {
+        display: grid;
+        gap: var(--space-xl);
+        padding: var(--space-xl);
+      }
+
+      .brand-top {
+        display: flex;
+        justify-content: space-between;
+        gap: var(--space-xl);
+        align-items: center;
+      }
+
+      .brand-name {
+        margin: 0;
+        font-size: 2rem;
+      }
+
+      .brand-badge {
+        min-width: 96px;
+        padding: var(--space-sm) var(--space-md);
+        border: 1px solid var(--ink);
+        font-family: "Gabarito", sans-serif;
+        font-weight: 800;
+        text-align: center;
+      }
+
+      .brand-card:nth-child(1) .brand-badge {
+        background: color-mix(in oklch, var(--signal), white 68%);
+      }
+
+      .brand-card:nth-child(2) .brand-badge {
+        background: color-mix(in oklch, var(--cool), white 68%);
+      }
+
+      .metrics {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--space-md);
+      }
+
+      .metric {
+        min-height: 92px;
+        display: grid;
+        align-content: end;
+        gap: var(--space-xs);
+        padding: var(--space-md);
+        background: color-mix(in oklch, var(--paper), var(--panel) 42%);
+        border: 1px solid var(--line);
+      }
+
+      .metric-value {
+        font-size: 1.7rem;
+        font-weight: 800;
+      }
+
+      .product-list,
+      .source-list,
+      .keywords {
+        display: grid;
+        gap: var(--space-sm);
+      }
+
+      .product-row {
+        padding: var(--space-sm) 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .product-title {
+        min-width: 0;
+        color: var(--ink);
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .product-title:hover {
+        text-decoration: underline;
+      }
+
+      .product-meta {
+        flex: 0 0 auto;
+        color: var(--muted);
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+
+      .panel {
+        padding: var(--space-xl);
+      }
+
+      .source-row {
+        padding: var(--space-md) 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .source-name {
+        font-family: "Gabarito", sans-serif;
+        font-size: 1.2rem;
+        font-weight: 800;
+      }
+
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-sm);
+      }
+
+      .chip {
+        padding: 7px 10px;
+        border: 1px solid var(--line);
+        background: color-mix(in oklch, var(--green), white 84%);
+        font-size: 0.86rem;
+        font-weight: 700;
+      }
+
+      .status-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.88rem;
+      }
+
+      th,
+      td {
+        padding: var(--space-sm);
+        border-top: 1px solid var(--line);
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        color: var(--muted);
+        font-size: 0.74rem;
+        text-transform: uppercase;
+      }
+
+      .ok {
+        color: var(--green);
+        font-weight: 800;
+      }
+
+      .blocked {
+        color: var(--signal);
+        font-weight: 800;
+      }
+
+      @media (max-width: 780px) {
+        header {
+          grid-template-columns: 1fr;
+        }
+
+        .shell {
+          width: min(100% - 20px, 1440px);
+          padding-top: var(--space-lg);
+        }
+
+        .section-head,
+        .meta-row,
+        .source-row,
+        .product-row {
+          align-items: flex-start;
+        }
+
+        .metrics {
+          grid-template-columns: 1fr;
+        }
+
+        .status-table {
+          display: block;
+          overflow-x: auto;
+          white-space: nowrap;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <header>
+        <div>
+          <h1>Zespa vs Bodyfriend Review Intel</h1>
+          <p class="subhead">
+            한국 쇼핑 검색에서 공개적으로 확인된 상품 카드만 집계합니다. 차단되거나 파싱할 수 없는 채널은 상태로 남기고, 상품/리뷰 데이터는 만들지 않습니다.
+          </p>
+        </div>
+        <div class="meta-panel" aria-live="polite">
+          <div class="meta-row">
+            <span class="label">Updated KST</span>
+            <span class="value" id="updated">Loading</span>
+          </div>
+          <div class="meta-row">
+            <span class="label">Latest rows</span>
+            <span class="value" id="row-count">0</span>
+          </div>
+          <div class="meta-row">
+            <span class="label">History rows</span>
+            <span class="value" id="history-count">0</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="notice" id="notice">
+        No collected product data is available yet. Run the local smoke test, then refresh this page from a local server.
+      </div>
+
+      <main>
+        <section>
+          <div class="section-head">
+            <h2>Brand Position</h2>
+            <span class="label">Product count, rating, review volume, price</span>
+          </div>
+          <div class="grid" id="brands"></div>
+        </section>
+
+        <section class="grid">
+          <div class="panel">
+            <div class="section-head">
+              <h2>Channel Coverage</h2>
+            </div>
+            <div class="source-list" id="channels"></div>
+          </div>
+          <div class="panel">
+            <div class="section-head">
+              <h2>Korean Keyword Counts</h2>
+            </div>
+            <div class="chips" id="keywords"></div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="section-head">
+            <h2>Source Status</h2>
+            <span class="label">Latest collection attempts</span>
+          </div>
+          <table class="status-table">
+            <thead>
+              <tr>
+                <th>Source</th>
+                <th>Query</th>
+                <th>Status</th>
+                <th>Rows</th>
+                <th>Error</th>
+              </tr>
+            </thead>
+            <tbody id="source-status"></tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      const formatNumber = (value) => {
+        if (value === null || value === undefined || value === "") return "n/a";
+        const number = Number(value);
+        return Number.isFinite(number) ? number.toLocaleString("ko-KR") : value;
+      };
+
+      const dataPaths = ["../data/latest.json", "data/latest.json"];
+
+      async function loadLatest() {
+        for (const path of dataPaths) {
+          try {
+            const response = await fetch(path, { cache: "no-store" });
+            if (response.ok) return response.json();
+          } catch (error) {
+            console.debug(`Unable to load ${path}`, error);
+          }
+        }
+        return null;
+      }
+
+      function renderBrands(brands) {
+        const container = document.getElementById("brands");
+        container.innerHTML = "";
+        Object.entries(brands || {}).forEach(([brand, item]) => {
+          const card = document.createElement("article");
+          card.className = "brand-card";
+          const topProducts = (item.top_products || [])
+            .map((product) => {
+              const title = product.title || "Untitled product";
+              const url = product.url || "#";
+              const meta = `${product.source || ""} · 리뷰 ${formatNumber(product.review_count)} · ${product.rating || "n/a"}점`;
+              return `<div class="product-row"><a class="product-title" href="${url}" target="_blank" rel="noreferrer">${title}</a><span class="product-meta">${meta}</span></div>`;
+            })
+            .join("");
+          card.innerHTML = `
+            <div class="brand-top">
+              <h3 class="brand-name">${brand}</h3>
+              <div class="brand-badge">${item.product_count || 0} rows</div>
+            </div>
+            <div class="metrics">
+              <div class="metric"><span class="label">Avg rating</span><span class="metric-value">${item.avg_rating ?? "n/a"}</span></div>
+              <div class="metric"><span class="label">Reviews</span><span class="metric-value">${formatNumber(item.total_review_count)}</span></div>
+              <div class="metric"><span class="label">Avg price</span><span class="metric-value">${formatNumber(item.avg_price)}</span></div>
+              <div class="metric"><span class="label">Top products</span><span class="metric-value">${(item.top_products || []).length}</span></div>
+            </div>
+            <div class="product-list">${topProducts || '<span class="label">No product rows</span>'}</div>
+          `;
+          container.appendChild(card);
+        });
+      }
+
+      function renderChannels(channels) {
+        const container = document.getElementById("channels");
+        container.innerHTML = "";
+        Object.entries(channels || {}).forEach(([source, item]) => {
+          const row = document.createElement("div");
+          row.className = "source-row";
+          row.innerHTML = `<span class="source-name">${source}</span><span class="value">${item.product_count || 0} rows · ${formatNumber(item.total_review_count)} reviews</span>`;
+          container.appendChild(row);
+        });
+        if (!container.children.length) container.innerHTML = '<span class="label">No channel rows yet</span>';
+      }
+
+      function renderKeywords(keywords) {
+        const container = document.getElementById("keywords");
+        container.innerHTML = "";
+        Object.entries(keywords || {}).forEach(([keyword, count]) => {
+          const chip = document.createElement("span");
+          chip.className = "chip";
+          chip.textContent = `${keyword} ${count}`;
+          container.appendChild(chip);
+        });
+        if (!container.children.length) container.innerHTML = '<span class="label">No keywords detected</span>';
+      }
+
+      function renderStatus(status) {
+        const container = document.getElementById("source-status");
+        container.innerHTML = "";
+        const rows = (status?.sources || []).slice(-40).reverse();
+        rows.forEach((item) => {
+          const tr = document.createElement("tr");
+          const state = item.blocked ? "blocked" : item.rows_found > 0 ? "ok" : "empty";
+          tr.innerHTML = `
+            <td>${item.source || ""}</td>
+            <td>${item.query || ""}</td>
+            <td class="${state === "blocked" ? "blocked" : state === "ok" ? "ok" : ""}">${state}</td>
+            <td>${item.rows_found ?? 0}</td>
+            <td>${item.error || ""}</td>
+          `;
+          container.appendChild(tr);
+        });
+        if (!container.children.length) {
+          container.innerHTML = '<tr><td colspan="5">No source attempts recorded.</td></tr>';
+        }
+      }
+
+      loadLatest().then((latest) => {
+        if (!latest) {
+          document.getElementById("updated").textContent = "No data";
+          document.getElementById("notice").style.display = "block";
+          return;
+        }
+        document.getElementById("updated").textContent = latest.updated_at_kst || "n/a";
+        document.getElementById("row-count").textContent = formatNumber(latest.row_count);
+        document.getElementById("history-count").textContent = formatNumber(latest.historical_row_count);
+        if (!latest.row_count) document.getElementById("notice").style.display = "block";
+        renderBrands(latest.brands);
+        renderChannels(latest.channels);
+        renderKeywords(latest.keywords);
+        renderStatus(latest.source_status);
+      });
+    </script>
+  </body>
+</html>

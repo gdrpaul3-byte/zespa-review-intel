@@ -1,0 +1,31 @@
+{
+  "timezone": "Asia/Seoul",
+  "request_delay_seconds": 2.0,
+  "brands": {
+    "Zespa": [
+      "제스파 안마기",
+      "제스파 마사지기",
+      "제스파 목 어깨 마사지기",
+      "제스파 발마사지기",
+      "제스파 종아리 마사지기",
+      "Zespa massager"
+    ],
+    "Bodyfriend": [
+      "바디프렌드 안마기",
+      "바디프랜드 안마의자",
+      "바디프렌드 마사지기",
+      "바디프랜드 팔콘",
+      "Bodyfriend massage chair"
+    ]
+  },
+  "sources": {
+    "naver_shopping": {
+      "enabled": true,
+      "base_url": "https://search.shopping.naver.com/search/all"
+    },
+    "coupang": {
+      "enabled": true,
+      "base_url": "https://www.coupang.com/np/search"
+    }
+  }
+}
