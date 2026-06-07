@@ -567,7 +567,7 @@
               <div class="eyebrow">Zespa vs Bodyfriend</div>
               <h2 id="command-title">브랜드 비교 관제판</h2>
             </div>
-            <span class="label">상품 · 소셜 · 감성 · 기회 노드</span>
+            <span class="label">상품 · 소셜 · 감성 비율 · 수요/리스크</span>
           </div>
 
           <div class="scoreboard" id="scoreboard"></div>
@@ -596,8 +596,8 @@
 
             <article class="panel chart-panel">
               <div class="section-head">
-                <h3>감성 분포</h3>
-                <span class="label">브랜드별 누적 막대</span>
+                <h3>감성 비율</h3>
+                <span class="label">브랜드별 전체 언급 중 비중</span>
               </div>
               <div class="chart-wrap"><canvas id="sentiment-chart"></canvas></div>
             </article>
@@ -606,8 +606,8 @@
           <div class="visual-grid secondary">
             <article class="panel chart-panel">
               <div class="section-head">
-                <h3>기회 차원 레이더</h3>
-                <span class="label">소셜 클러스터/언급유형 기반</span>
+                <h3>소셜 수요·리스크 유형 비교</h3>
+                <span class="label">각 브랜드 내 언급 유형을 0~100으로 정규화</span>
               </div>
               <div class="chart-wrap"><canvas id="opportunity-radar"></canvas></div>
             </article>
@@ -949,22 +949,60 @@
           ["mixed", "혼합"],
           ["negative", "부정"],
         ];
+        const sentimentByBrand = Object.fromEntries(
+          brandOrder.map((brand) => {
+            const sentiment = socialData?.brands?.[brand]?.sentiment || {};
+            const counts = sentimentLabels.map(([key]) => Number(sentiment[key]) || 0);
+            const total = counts.reduce((sum, count) => sum + count, 0);
+            const percentages = counts.map((count) => (total ? Number(((count / total) * 100).toFixed(1)) : 0));
+            if (total && percentages.length) {
+              const priorSum = percentages.slice(0, -1).reduce((sum, value) => sum + value, 0);
+              percentages[percentages.length - 1] = Number(Math.max(0, 100 - priorSum).toFixed(1));
+            }
+            return [brand, { counts, percentages }];
+          })
+        );
         createChart("sentiment-chart", {
           type: "bar",
           data: {
             labels: brandOrder.map((brand) => brandKorean[brand]),
-            datasets: sentimentLabels.map(([key, label]) => ({
+            datasets: sentimentLabels.map(([key, label], sentimentIndex) => ({
               label,
-              data: brandOrder.map((brand) => socialData?.brands?.[brand]?.sentiment?.[key] || 0),
+              data: brandOrder.map((brand) => sentimentByBrand[brand]?.percentages?.[sentimentIndex] || 0),
+              rawCounts: brandOrder.map((brand) => sentimentByBrand[brand]?.counts?.[sentimentIndex] || 0),
               backgroundColor: chartColors[key],
               borderWidth: 0,
             })),
           },
           options: baseChartOptions({
             indexAxis: "x",
+            plugins: {
+              ...baseChartOptions().plugins,
+              tooltip: {
+                ...baseChartOptions().plugins.tooltip,
+                callbacks: {
+                  label: (context) => {
+                    const count = context.dataset.rawCounts?.[context.dataIndex] || 0;
+                    const percent = Number(context.raw) || 0;
+                    return `${context.dataset.label}: ${percent.toFixed(1)}% (${formatNumber(count)}건)`;
+                  },
+                },
+              },
+            },
             scales: {
               x: { stacked: true, ticks: { color: chartColors.neutral, font: { weight: 800 } }, grid: { display: false } },
-              y: { stacked: true, beginAtZero: true, ticks: { color: chartColors.neutral, font: { weight: 700 } }, grid: { color: "oklch(83% 0.026 238 / 0.55)" } },
+              y: {
+                stacked: true,
+                beginAtZero: true,
+                max: 100,
+                title: { display: true, text: "전체 언급 중 비율", color: chartColors.neutral, font: { weight: 800 } },
+                ticks: {
+                  color: chartColors.neutral,
+                  font: { weight: 700 },
+                  callback: (value) => `${Number(value)}%`,
+                },
+                grid: { color: "oklch(83% 0.026 238 / 0.55)" },
+              },
             },
           }),
         });
@@ -989,7 +1027,7 @@
         createChart("opportunity-radar", {
           type: "radar",
           data: {
-            labels: ["추천/구매질문", "안마의자", "발·종아리", "부모님 선물", "가성비/후기", "AS 리스크", "광고 의심"],
+            labels: ["추천·구매문의", "안마의자 관심", "발·종아리 관심", "부모님 선물", "가격·후기 관심", "AS·고장 불만", "광고 의심 언급"],
             datasets: brandOrder.map((brand) => ({
               label: brandKorean[brand],
               data: opportunityValues(socialData?.brands?.[brand]),
@@ -1001,6 +1039,15 @@
             })),
           },
           options: baseChartOptions({
+            plugins: {
+              ...baseChartOptions().plugins,
+              tooltip: {
+                ...baseChartOptions().plugins.tooltip,
+                callbacks: {
+                  label: (context) => `${context.dataset.label}: 상대 강도 ${Math.round(Number(context.raw) || 0)}/100`,
+                },
+              },
+            },
             scales: {
               r: {
                 min: 0,
