@@ -13,9 +13,13 @@
     ],
     "Bodyfriend": [
       "바디프렌드 후기",
-      "바디프랜드 AS",
+      "바디프렌드 AS",
       "바디프렌드 팔콘 후기",
       "바디프렌드 안마의자 추천",
+      "바디프렌드 안마기 추천",
+      "바디프랜드 후기",
+      "바디프랜드 AS",
+      "바디프랜드 팔콘 후기",
       "Bodyfriend massage chair"
     ],
     "Category": [
@@ -44,6 +48,7 @@
         "제스파 발마사지기",
         "제스파 종아리 마사지기",
         "바디프렌드 팔콘 후기",
+        "바디프랜드 팔콘 후기",
         "안마의자 추천",
         "부모님 선물 마사지기"
       ]
@@ -70,37 +75,37 @@
     {
       "platform": "instagram",
       "site": "instagram.com",
-      "queries": ["제스파", "바디프렌드", "발마사지기 추천"]
+      "queries": ["제스파", "바디프렌드", "바디프랜드", "발마사지기 추천"]
     },
     {
       "platform": "threads",
       "site": "threads.net",
-      "queries": ["제스파", "바디프렌드", "안마의자 추천"]
+      "queries": ["제스파", "바디프렌드", "바디프랜드", "안마의자 추천"]
     },
     {
       "platform": "naver_cafe",
       "site": "cafe.naver.com",
-      "queries": ["제스파 후기", "바디프렌드 AS", "부모님 마사지기 추천"]
+      "queries": ["제스파 후기", "바디프렌드 AS", "바디프랜드 AS", "부모님 마사지기 추천"]
     },
     {
       "platform": "dcinside",
       "site": "dcinside.com",
-      "queries": ["제스파", "바디프렌드", "안마의자 추천"]
+      "queries": ["제스파", "바디프렌드", "바디프랜드", "안마의자 추천"]
     },
     {
       "platform": "ppomppu",
       "site": "ppomppu.co.kr",
-      "queries": ["제스파", "바디프렌드", "마사지기 추천"]
+      "queries": ["제스파", "바디프렌드", "바디프랜드", "마사지기 추천"]
     },
     {
       "platform": "clien",
       "site": "clien.net",
-      "queries": ["제스파", "바디프렌드", "안마의자 추천"]
+      "queries": ["제스파", "바디프렌드", "바디프랜드", "안마의자 추천"]
     },
     {
       "platform": "theqoo",
       "site": "theqoo.net",
-      "queries": ["제스파", "바디프렌드", "발마사지기"]
+      "queries": ["제스파", "바디프렌드", "바디프랜드", "발마사지기"]
     }
   ]
 }

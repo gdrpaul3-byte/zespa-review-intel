@@ -1,8 +1,8 @@
 {
-  "updated_at_kst": "2026-06-07T13:17:15+09:00",
+  "updated_at_kst": "2026-06-07T13:41:13+09:00",
   "sources": [
     {
-      "checked_at_kst": "2026-06-07T13:16:46+09:00",
+      "checked_at_kst": "2026-06-07T13:40:39+09:00",
       "source": "danawa",
       "brand": "Zespa",
       "query": "제스파 안마기",
@@ -16,7 +16,7 @@
       "error": ""
     },
     {
-      "checked_at_kst": "2026-06-07T13:16:48+09:00",
+      "checked_at_kst": "2026-06-07T13:40:41+09:00",
       "source": "danawa",
       "brand": "Zespa",
       "query": "제스파 마사지기",
@@ -30,7 +30,7 @@
       "error": ""
     },
     {
-      "checked_at_kst": "2026-06-07T13:16:50+09:00",
+      "checked_at_kst": "2026-06-07T13:40:44+09:00",
       "source": "danawa",
       "brand": "Zespa",
       "query": "제스파 목 어깨 마사지기",
@@ -44,7 +44,7 @@
       "error": ""
     },
     {
-      "checked_at_kst": "2026-06-07T13:16:53+09:00",
+      "checked_at_kst": "2026-06-07T13:40:46+09:00",
       "source": "danawa",
       "brand": "Zespa",
       "query": "제스파 발마사지기",
@@ -58,7 +58,7 @@
       "error": ""
     },
     {
-      "checked_at_kst": "2026-06-07T13:16:55+09:00",
+      "checked_at_kst": "2026-06-07T13:40:49+09:00",
       "source": "danawa",
       "brand": "Zespa",
       "query": "제스파 종아리 마사지기",
@@ -72,7 +72,7 @@
       "error": ""
     },
     {
-      "checked_at_kst": "2026-06-07T13:16:56+09:00",
+      "checked_at_kst": "2026-06-07T13:40:50+09:00",
       "source": "danawa",
       "brand": "Zespa",
       "query": "Zespa massager",
@@ -82,11 +82,11 @@
       "method": "httpx",
       "http_status": 200,
       "blocked": false,
-      "rows_found": 10,
+      "rows_found": 20,
       "error": ""
     },
     {
-      "checked_at_kst": "2026-06-07T13:16:59+09:00",
+      "checked_at_kst": "2026-06-07T13:40:52+09:00",
       "source": "danawa",
       "brand": "Bodyfriend",
       "query": "바디프렌드 안마기",
@@ -100,13 +100,13 @@
       "error": ""
     },
     {
-      "checked_at_kst": "2026-06-07T13:17:01+09:00",
+      "checked_at_kst": "2026-06-07T13:40:55+09:00",
       "source": "danawa",
       "brand": "Bodyfriend",
-      "query": "바디프랜드 안마의자",
+      "query": "바디프렌드 안마의자",
       "page": 1,
-      "url": "https://search.danawa.com/dsearch.php?query=%EB%B0%94%EB%94%94%ED%94%84%EB%9E%9C%EB%93%9C+%EC%95%88%EB%A7%88%EC%9D%98%EC%9E%90",
-      "final_url": "https://search.danawa.com/dsearch.php?query=%EB%B0%94%EB%94%94%ED%94%84%EB%9E%9C%EB%93%9C+%EC%95%88%EB%A7%88%EC%9D%98%EC%9E%90",
+      "url": "https://search.danawa.com/dsearch.php?query=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%EC%95%88%EB%A7%88%EC%9D%98%EC%9E%90",
+      "final_url": "https://search.danawa.com/dsearch.php?query=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%EC%95%88%EB%A7%88%EC%9D%98%EC%9E%90",
       "method": "httpx",
       "http_status": 200,
       "blocked": false,
@@ -114,7 +114,7 @@
       "error": ""
     },
     {
-      "checked_at_kst": "2026-06-07T13:17:03+09:00",
+      "checked_at_kst": "2026-06-07T13:40:58+09:00",
       "source": "danawa",
       "brand": "Bodyfriend",
       "query": "바디프렌드 마사지기",
@@ -128,7 +128,49 @@
       "error": ""
     },
     {
-      "checked_at_kst": "2026-06-07T13:17:05+09:00",
+      "checked_at_kst": "2026-06-07T13:41:01+09:00",
+      "source": "danawa",
+      "brand": "Bodyfriend",
+      "query": "바디프렌드 팔콘",
+      "page": 1,
+      "url": "https://search.danawa.com/dsearch.php?query=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%ED%8C%94%EC%BD%98",
+      "final_url": "https://search.danawa.com/dsearch.php?query=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%ED%8C%94%EC%BD%98",
+      "method": "httpx",
+      "http_status": 200,
+      "blocked": false,
+      "rows_found": 20,
+      "error": ""
+    },
+    {
+      "checked_at_kst": "2026-06-07T13:41:03+09:00",
+      "source": "danawa",
+      "brand": "Bodyfriend",
+      "query": "바디프렌드 안마의자 추천",
+      "page": 1,
+      "url": "https://search.danawa.com/dsearch.php?query=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%EC%95%88%EB%A7%88%EC%9D%98%EC%9E%90+%EC%B6%94%EC%B2%9C",
+      "final_url": "https://search.danawa.com/dsearch.php?query=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%EC%95%88%EB%A7%88%EC%9D%98%EC%9E%90+%EC%B6%94%EC%B2%9C",
+      "method": "httpx",
+      "http_status": 200,
+      "blocked": false,
+      "rows_found": 0,
+      "error": ""
+    },
+    {
+      "checked_at_kst": "2026-06-07T13:41:05+09:00",
+      "source": "danawa",
+      "brand": "Bodyfriend",
+      "query": "바디프랜드 안마의자",
+      "page": 1,
+      "url": "https://search.danawa.com/dsearch.php?query=%EB%B0%94%EB%94%94%ED%94%84%EB%9E%9C%EB%93%9C+%EC%95%88%EB%A7%88%EC%9D%98%EC%9E%90",
+      "final_url": "https://search.danawa.com/dsearch.php?query=%EB%B0%94%EB%94%94%ED%94%84%EB%9E%9C%EB%93%9C+%EC%95%88%EB%A7%88%EC%9D%98%EC%9E%90",
+      "method": "httpx",
+      "http_status": 200,
+      "blocked": false,
+      "rows_found": 0,
+      "error": ""
+    },
+    {
+      "checked_at_kst": "2026-06-07T13:41:07+09:00",
       "source": "danawa",
       "brand": "Bodyfriend",
       "query": "바디프랜드 팔콘",
@@ -138,11 +180,11 @@
       "method": "httpx",
       "http_status": 200,
       "blocked": false,
-      "rows_found": 10,
+      "rows_found": 20,
       "error": ""
     },
     {
-      "checked_at_kst": "2026-06-07T13:17:07+09:00",
+      "checked_at_kst": "2026-06-07T13:41:10+09:00",
       "source": "danawa",
       "brand": "Bodyfriend",
       "query": "Bodyfriend massage chair",
@@ -156,7 +198,7 @@
       "error": ""
     },
     {
-      "checked_at_kst": "2026-06-07T13:17:08+09:00",
+      "checked_at_kst": "2026-06-07T13:41:10+09:00",
       "source": "naver_shopping",
       "brand": "Zespa",
       "query": "제스파 안마기",
@@ -170,7 +212,7 @@
       "error": "blocked_or_challenge"
     },
     {
-      "checked_at_kst": "2026-06-07T13:17:08+09:00",
+      "checked_at_kst": "2026-06-07T13:41:10+09:00",
       "source": "naver_shopping",
       "brand": "Zespa",
       "query": "제스파 마사지기",
@@ -184,7 +226,7 @@
       "error": "blocked_or_challenge"
     },
     {
-      "checked_at_kst": "2026-06-07T13:17:08+09:00",
+      "checked_at_kst": "2026-06-07T13:41:10+09:00",
       "source": "naver_shopping",
       "brand": "Zespa",
       "query": "제스파 목 어깨 마사지기",
@@ -198,7 +240,7 @@
       "error": "blocked_or_challenge"
     },
     {
-      "checked_at_kst": "2026-06-07T13:17:09+09:00",
+      "checked_at_kst": "2026-06-07T13:41:10+09:00",
       "source": "naver_shopping",
       "brand": "Zespa",
       "query": "제스파 발마사지기",
@@ -212,7 +254,7 @@
       "error": "blocked_or_challenge"
     },
     {
-      "checked_at_kst": "2026-06-07T13:17:09+09:00",
+      "checked_at_kst": "2026-06-07T13:41:10+09:00",
       "source": "naver_shopping",
       "brand": "Zespa",
       "query": "제스파 종아리 마사지기",
@@ -226,7 +268,7 @@
       "error": "blocked_or_challenge"
     },
     {
-      "checked_at_kst": "2026-06-07T13:17:09+09:00",
+      "checked_at_kst": "2026-06-07T13:41:10+09:00",
       "source": "naver_shopping",
       "brand": "Zespa",
       "query": "Zespa massager",
@@ -240,7 +282,7 @@
       "error": "blocked_or_challenge"
     },
     {
-      "checked_at_kst": "2026-06-07T13:17:10+09:00",
+      "checked_at_kst": "2026-06-07T13:41:10+09:00",
       "source": "naver_shopping",
       "brand": "Bodyfriend",
       "query": "바디프렌드 안마기",
@@ -254,13 +296,13 @@
       "error": "blocked_or_challenge"
     },
     {
-      "checked_at_kst": "2026-06-07T13:17:10+09:00",
+      "checked_at_kst": "2026-06-07T13:41:11+09:00",
       "source": "naver_shopping",
       "brand": "Bodyfriend",
-      "query": "바디프랜드 안마의자",
+      "query": "바디프렌드 안마의자",
       "page": 1,
-      "url": "https://search.shopping.naver.com/search/all?query=%EB%B0%94%EB%94%94%ED%94%84%EB%9E%9C%EB%93%9C+%EC%95%88%EB%A7%88%EC%9D%98%EC%9E%90&pagingIndex=1&pagingSize=40&productSet=total&sort=rel&viewType=list&frm=NVSHATC&origQuery=%EB%B0%94%EB%94%94%ED%94%84%EB%9E%9C%EB%93%9C+%EC%95%88%EB%A7%88%EC%9D%98%EC%9E%90&start=1",
-      "final_url": "https://search.shopping.naver.com/search/all?query=%EB%B0%94%EB%94%94%ED%94%84%EB%9E%9C%EB%93%9C+%EC%95%88%EB%A7%88%EC%9D%98%EC%9E%90&pagingIndex=1&pagingSize=40&productSet=total&sort=rel&viewType=list&frm=NVSHATC&origQuery=%EB%B0%94%EB%94%94%ED%94%84%EB%9E%9C%EB%93%9C+%EC%95%88%EB%A7%88%EC%9D%98%EC%9E%90&start=1",
+      "url": "https://search.shopping.naver.com/search/all?query=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%EC%95%88%EB%A7%88%EC%9D%98%EC%9E%90&pagingIndex=1&pagingSize=40&productSet=total&sort=rel&viewType=list&frm=NVSHATC&origQuery=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%EC%95%88%EB%A7%88%EC%9D%98%EC%9E%90&start=1",
+      "final_url": "https://search.shopping.naver.com/search/all?query=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%EC%95%88%EB%A7%88%EC%9D%98%EC%9E%90&pagingIndex=1&pagingSize=40&productSet=total&sort=rel&viewType=list&frm=NVSHATC&origQuery=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%EC%95%88%EB%A7%88%EC%9D%98%EC%9E%90&start=1",
       "method": "httpx",
       "http_status": 418,
       "blocked": true,
@@ -268,7 +310,7 @@
       "error": "blocked_or_challenge"
     },
     {
-      "checked_at_kst": "2026-06-07T13:17:10+09:00",
+      "checked_at_kst": "2026-06-07T13:41:11+09:00",
       "source": "naver_shopping",
       "brand": "Bodyfriend",
       "query": "바디프렌드 마사지기",
@@ -282,7 +324,49 @@
       "error": "blocked_or_challenge"
     },
     {
-      "checked_at_kst": "2026-06-07T13:17:11+09:00",
+      "checked_at_kst": "2026-06-07T13:41:11+09:00",
+      "source": "naver_shopping",
+      "brand": "Bodyfriend",
+      "query": "바디프렌드 팔콘",
+      "page": 1,
+      "url": "https://search.shopping.naver.com/search/all?query=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%ED%8C%94%EC%BD%98&pagingIndex=1&pagingSize=40&productSet=total&sort=rel&viewType=list&frm=NVSHATC&origQuery=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%ED%8C%94%EC%BD%98&start=1",
+      "final_url": "https://search.shopping.naver.com/search/all?query=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%ED%8C%94%EC%BD%98&pagingIndex=1&pagingSize=40&productSet=total&sort=rel&viewType=list&frm=NVSHATC&origQuery=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%ED%8C%94%EC%BD%98&start=1",
+      "method": "httpx",
+      "http_status": 418,
+      "blocked": true,
+      "rows_found": 0,
+      "error": "blocked_or_challenge"
+    },
+    {
+      "checked_at_kst": "2026-06-07T13:41:11+09:00",
+      "source": "naver_shopping",
+      "brand": "Bodyfriend",
+      "query": "바디프렌드 안마의자 추천",
+      "page": 1,
+      "url": "https://search.shopping.naver.com/search/all?query=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%EC%95%88%EB%A7%88%EC%9D%98%EC%9E%90+%EC%B6%94%EC%B2%9C&pagingIndex=1&pagingSize=40&productSet=total&sort=rel&viewType=list&frm=NVSHATC&origQuery=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%EC%95%88%EB%A7%88%EC%9D%98%EC%9E%90+%EC%B6%94%EC%B2%9C&start=1",
+      "final_url": "https://search.shopping.naver.com/search/all?query=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%EC%95%88%EB%A7%88%EC%9D%98%EC%9E%90+%EC%B6%94%EC%B2%9C&pagingIndex=1&pagingSize=40&productSet=total&sort=rel&viewType=list&frm=NVSHATC&origQuery=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%EC%95%88%EB%A7%88%EC%9D%98%EC%9E%90+%EC%B6%94%EC%B2%9C&start=1",
+      "method": "httpx",
+      "http_status": 418,
+      "blocked": true,
+      "rows_found": 0,
+      "error": "blocked_or_challenge"
+    },
+    {
+      "checked_at_kst": "2026-06-07T13:41:11+09:00",
+      "source": "naver_shopping",
+      "brand": "Bodyfriend",
+      "query": "바디프랜드 안마의자",
+      "page": 1,
+      "url": "https://search.shopping.naver.com/search/all?query=%EB%B0%94%EB%94%94%ED%94%84%EB%9E%9C%EB%93%9C+%EC%95%88%EB%A7%88%EC%9D%98%EC%9E%90&pagingIndex=1&pagingSize=40&productSet=total&sort=rel&viewType=list&frm=NVSHATC&origQuery=%EB%B0%94%EB%94%94%ED%94%84%EB%9E%9C%EB%93%9C+%EC%95%88%EB%A7%88%EC%9D%98%EC%9E%90&start=1",
+      "final_url": "https://search.shopping.naver.com/search/all?query=%EB%B0%94%EB%94%94%ED%94%84%EB%9E%9C%EB%93%9C+%EC%95%88%EB%A7%88%EC%9D%98%EC%9E%90&pagingIndex=1&pagingSize=40&productSet=total&sort=rel&viewType=list&frm=NVSHATC&origQuery=%EB%B0%94%EB%94%94%ED%94%84%EB%9E%9C%EB%93%9C+%EC%95%88%EB%A7%88%EC%9D%98%EC%9E%90&start=1",
+      "method": "httpx",
+      "http_status": 418,
+      "blocked": true,
+      "rows_found": 0,
+      "error": "blocked_or_challenge"
+    },
+    {
+      "checked_at_kst": "2026-06-07T13:41:11+09:00",
       "source": "naver_shopping",
       "brand": "Bodyfriend",
       "query": "바디프랜드 팔콘",
@@ -296,7 +380,7 @@
       "error": "blocked_or_challenge"
     },
     {
-      "checked_at_kst": "2026-06-07T13:17:11+09:00",
+      "checked_at_kst": "2026-06-07T13:41:11+09:00",
       "source": "naver_shopping",
       "brand": "Bodyfriend",
       "query": "Bodyfriend massage chair",
@@ -310,7 +394,7 @@
       "error": "blocked_or_challenge"
     },
     {
-      "checked_at_kst": "2026-06-07T13:17:12+09:00",
+      "checked_at_kst": "2026-06-07T13:41:11+09:00",
       "source": "coupang",
       "brand": "Zespa",
       "query": "제스파 안마기",
@@ -324,7 +408,7 @@
       "error": "blocked_or_challenge"
     },
     {
-      "checked_at_kst": "2026-06-07T13:17:12+09:00",
+      "checked_at_kst": "2026-06-07T13:41:12+09:00",
       "source": "coupang",
       "brand": "Zespa",
       "query": "제스파 마사지기",
@@ -338,7 +422,7 @@
       "error": "blocked_or_challenge"
     },
     {
-      "checked_at_kst": "2026-06-07T13:17:12+09:00",
+      "checked_at_kst": "2026-06-07T13:41:12+09:00",
       "source": "coupang",
       "brand": "Zespa",
       "query": "제스파 목 어깨 마사지기",
@@ -352,7 +436,7 @@
       "error": "blocked_or_challenge"
     },
     {
-      "checked_at_kst": "2026-06-07T13:17:13+09:00",
+      "checked_at_kst": "2026-06-07T13:41:12+09:00",
       "source": "coupang",
       "brand": "Zespa",
       "query": "제스파 발마사지기",
@@ -366,7 +450,7 @@
       "error": "blocked_or_challenge"
     },
     {
-      "checked_at_kst": "2026-06-07T13:17:13+09:00",
+      "checked_at_kst": "2026-06-07T13:41:12+09:00",
       "source": "coupang",
       "brand": "Zespa",
       "query": "제스파 종아리 마사지기",
@@ -380,7 +464,7 @@
       "error": "blocked_or_challenge"
     },
     {
-      "checked_at_kst": "2026-06-07T13:17:13+09:00",
+      "checked_at_kst": "2026-06-07T13:41:12+09:00",
       "source": "coupang",
       "brand": "Zespa",
       "query": "Zespa massager",
@@ -394,7 +478,7 @@
       "error": "blocked_or_challenge"
     },
     {
-      "checked_at_kst": "2026-06-07T13:17:14+09:00",
+      "checked_at_kst": "2026-06-07T13:41:12+09:00",
       "source": "coupang",
       "brand": "Bodyfriend",
       "query": "바디프렌드 안마기",
@@ -408,13 +492,13 @@
       "error": "blocked_or_challenge"
     },
     {
-      "checked_at_kst": "2026-06-07T13:17:14+09:00",
+      "checked_at_kst": "2026-06-07T13:41:12+09:00",
       "source": "coupang",
       "brand": "Bodyfriend",
-      "query": "바디프랜드 안마의자",
+      "query": "바디프렌드 안마의자",
       "page": 1,
-      "url": "https://www.coupang.com/np/search?q=%EB%B0%94%EB%94%94%ED%94%84%EB%9E%9C%EB%93%9C+%EC%95%88%EB%A7%88%EC%9D%98%EC%9E%90&channel=user&page=1",
-      "final_url": "https://www.coupang.com/np/search?q=%EB%B0%94%EB%94%94%ED%94%84%EB%9E%9C%EB%93%9C+%EC%95%88%EB%A7%88%EC%9D%98%EC%9E%90&channel=user&page=1",
+      "url": "https://www.coupang.com/np/search?q=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%EC%95%88%EB%A7%88%EC%9D%98%EC%9E%90&channel=user&page=1",
+      "final_url": "https://www.coupang.com/np/search?q=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%EC%95%88%EB%A7%88%EC%9D%98%EC%9E%90&channel=user&page=1",
       "method": "httpx",
       "http_status": 403,
       "blocked": true,
@@ -422,7 +506,7 @@
       "error": "blocked_or_challenge"
     },
     {
-      "checked_at_kst": "2026-06-07T13:17:14+09:00",
+      "checked_at_kst": "2026-06-07T13:41:13+09:00",
       "source": "coupang",
       "brand": "Bodyfriend",
       "query": "바디프렌드 마사지기",
@@ -436,7 +520,49 @@
       "error": "blocked_or_challenge"
     },
     {
-      "checked_at_kst": "2026-06-07T13:17:15+09:00",
+      "checked_at_kst": "2026-06-07T13:41:13+09:00",
+      "source": "coupang",
+      "brand": "Bodyfriend",
+      "query": "바디프렌드 팔콘",
+      "page": 1,
+      "url": "https://www.coupang.com/np/search?q=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%ED%8C%94%EC%BD%98&channel=user&page=1",
+      "final_url": "https://www.coupang.com/np/search?q=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%ED%8C%94%EC%BD%98&channel=user&page=1",
+      "method": "httpx",
+      "http_status": 403,
+      "blocked": true,
+      "rows_found": 0,
+      "error": "blocked_or_challenge"
+    },
+    {
+      "checked_at_kst": "2026-06-07T13:41:13+09:00",
+      "source": "coupang",
+      "brand": "Bodyfriend",
+      "query": "바디프렌드 안마의자 추천",
+      "page": 1,
+      "url": "https://www.coupang.com/np/search?q=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%EC%95%88%EB%A7%88%EC%9D%98%EC%9E%90+%EC%B6%94%EC%B2%9C&channel=user&page=1",
+      "final_url": "https://www.coupang.com/np/search?q=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%EC%95%88%EB%A7%88%EC%9D%98%EC%9E%90+%EC%B6%94%EC%B2%9C&channel=user&page=1",
+      "method": "httpx",
+      "http_status": 403,
+      "blocked": true,
+      "rows_found": 0,
+      "error": "blocked_or_challenge"
+    },
+    {
+      "checked_at_kst": "2026-06-07T13:41:13+09:00",
+      "source": "coupang",
+      "brand": "Bodyfriend",
+      "query": "바디프랜드 안마의자",
+      "page": 1,
+      "url": "https://www.coupang.com/np/search?q=%EB%B0%94%EB%94%94%ED%94%84%EB%9E%9C%EB%93%9C+%EC%95%88%EB%A7%88%EC%9D%98%EC%9E%90&channel=user&page=1",
+      "final_url": "https://www.coupang.com/np/search?q=%EB%B0%94%EB%94%94%ED%94%84%EB%9E%9C%EB%93%9C+%EC%95%88%EB%A7%88%EC%9D%98%EC%9E%90&channel=user&page=1",
+      "method": "httpx",
+      "http_status": 403,
+      "blocked": true,
+      "rows_found": 0,
+      "error": "blocked_or_challenge"
+    },
+    {
+      "checked_at_kst": "2026-06-07T13:41:13+09:00",
       "source": "coupang",
       "brand": "Bodyfriend",
       "query": "바디프랜드 팔콘",
@@ -450,7 +576,7 @@
       "error": "blocked_or_challenge"
     },
     {
-      "checked_at_kst": "2026-06-07T13:17:15+09:00",
+      "checked_at_kst": "2026-06-07T13:41:13+09:00",
       "source": "coupang",
       "brand": "Bodyfriend",
       "query": "Bodyfriend massage chair",

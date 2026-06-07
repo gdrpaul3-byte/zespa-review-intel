@@ -225,6 +225,38 @@
         gap: var(--space-md);
       }
 
+      .comparison-panel {
+        min-height: 360px;
+        display: grid;
+        grid-template-rows: auto 1fr;
+        gap: var(--space-md);
+      }
+
+      .comparison-charts {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: var(--space-md);
+      }
+
+      .mini-chart {
+        min-width: 0;
+        display: grid;
+        grid-template-rows: auto minmax(190px, 1fr);
+        gap: var(--space-sm);
+        padding: var(--space-md);
+        border: 1px solid var(--line);
+        background: color-mix(in oklch, var(--paper), white 42%);
+      }
+
+      .mini-chart h4 {
+        margin: 0;
+        font-size: 0.86rem;
+      }
+
+      .mini-chart .chart-wrap {
+        min-height: 190px;
+      }
+
       .chart-wrap {
         position: relative;
         min-height: 270px;
@@ -444,6 +476,10 @@
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
+        .comparison-charts {
+          grid-template-columns: 1fr;
+        }
+
         .meta-panel {
           min-width: 0;
         }
@@ -500,7 +536,7 @@
         <div>
           <div class="eyebrow">Review Intel · 공개 데이터 대시보드</div>
           <h1>Visual Command Center</h1>
-          <p class="subhead">제스파와 바디프랜드를 같은 시각 프레임에서 비교합니다. 상단은 의사결정용 시각화, 하단은 원천 수집 상태와 테이블 검증 영역입니다.</p>
+          <p class="subhead">제스파와 바디프렌드를 같은 시각 프레임에서 비교합니다. 상단은 의사결정용 시각화, 하단은 원천 수집 상태와 테이블 검증 영역입니다.</p>
         </div>
         <div class="meta-panel" aria-live="polite">
           <div class="meta-row">
@@ -537,12 +573,25 @@
           <div class="scoreboard" id="scoreboard"></div>
 
           <div class="visual-grid">
-            <article class="panel chart-panel">
+            <article class="panel comparison-panel">
               <div class="section-head">
-                <h3>브랜드 스케일 비교</h3>
-                <span class="label">상품수 · 언급수 · 평균가(10만원)</span>
+                <h3>브랜드 단위별 비교</h3>
+                <span class="label">단위별 분리 차트</span>
               </div>
-              <div class="chart-wrap"><canvas id="brand-scale-chart"></canvas></div>
+              <div class="comparison-charts">
+                <div class="mini-chart">
+                  <h4>상품 수</h4>
+                  <div class="chart-wrap"><canvas id="product-count-chart"></canvas></div>
+                </div>
+                <div class="mini-chart">
+                  <h4>소셜 언급 수</h4>
+                  <div class="chart-wrap"><canvas id="social-mention-chart"></canvas></div>
+                </div>
+                <div class="mini-chart">
+                  <h4>평균가</h4>
+                  <div class="chart-wrap"><canvas id="avg-price-chart"></canvas></div>
+                </div>
+              </div>
             </article>
 
             <article class="panel chart-panel">
@@ -689,7 +738,7 @@
 
     <script>
       const brandOrder = ["Zespa", "Bodyfriend"];
-      const brandKorean = { Zespa: "제스파", Bodyfriend: "바디프랜드", Category: "카테고리 수요" };
+      const brandKorean = { Zespa: "제스파", Bodyfriend: "바디프렌드", Category: "카테고리 수요" };
       const chartColors = {
         Zespa: "oklch(56% 0.16 25)",
         Bodyfriend: "oklch(54% 0.12 210)",
@@ -793,28 +842,101 @@
         };
       }
 
-      function buildScaleChart(productData, socialData) {
+      function buildUnitComparisonCharts(productData, socialData) {
         const productCounts = brandOrder.map((brand) => productData?.brands?.[brand]?.product_count || 0);
         const socialMentions = brandOrder.map((brand) => socialData?.brands?.[brand]?.mention_count || 0);
-        const priceTenMan = brandOrder.map((brand) => {
+        const avgPriceMan = brandOrder.map((brand) => {
           const price = Number(productData?.brands?.[brand]?.avg_price || 0);
-          return Number((price / 100000).toFixed(1));
+          return Math.round(price / 10000);
         });
+        const labels = brandOrder.map((brand) => brandKorean[brand]);
 
-        createChart("brand-scale-chart", {
+        createChart("product-count-chart", {
           type: "bar",
           data: {
-            labels: brandOrder.map((brand) => brandKorean[brand]),
+            labels,
             datasets: [
-              { label: "상품수", data: productCounts, backgroundColor: "oklch(56% 0.16 25 / 0.88)", borderColor: chartColors.Zespa, borderWidth: 1 },
-              { label: "소셜 언급수", data: socialMentions, backgroundColor: "oklch(54% 0.12 210 / 0.82)", borderColor: chartColors.Bodyfriend, borderWidth: 1 },
-              { label: "평균가(10만원)", data: priceTenMan, backgroundColor: "oklch(60% 0.13 143 / 0.78)", borderColor: chartColors.Category, borderWidth: 1 },
+              {
+                label: "상품 수",
+                data: productCounts,
+                backgroundColor: ["oklch(56% 0.16 25 / 0.88)", "oklch(54% 0.12 210 / 0.82)"],
+                borderColor: [chartColors.Zespa, chartColors.Bodyfriend],
+                borderWidth: 1,
+              },
             ],
           },
           options: baseChartOptions({
+            plugins: { ...baseChartOptions().plugins, legend: { display: false } },
             scales: {
               x: { ticks: { color: chartColors.neutral, font: { weight: 800 } }, grid: { display: false } },
               y: { beginAtZero: true, ticks: { color: chartColors.neutral, font: { weight: 700 } }, grid: { color: "oklch(83% 0.026 238 / 0.55)" } },
+            },
+          }),
+        });
+
+        createChart("social-mention-chart", {
+          type: "bar",
+          data: {
+            labels,
+            datasets: [
+              {
+                label: "소셜 언급 수",
+                data: socialMentions,
+                backgroundColor: ["oklch(56% 0.16 25 / 0.88)", "oklch(54% 0.12 210 / 0.82)"],
+                borderColor: [chartColors.Zespa, chartColors.Bodyfriend],
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: baseChartOptions({
+            plugins: { ...baseChartOptions().plugins, legend: { display: false } },
+            scales: {
+              x: { ticks: { color: chartColors.neutral, font: { weight: 800 } }, grid: { display: false } },
+              y: { beginAtZero: true, ticks: { color: chartColors.neutral, font: { weight: 700 } }, grid: { color: "oklch(83% 0.026 238 / 0.55)" } },
+            },
+          }),
+        });
+
+        createChart("avg-price-chart", {
+          type: "bar",
+          data: {
+            labels,
+            datasets: [
+              {
+                label: "평균가(만원)",
+                data: avgPriceMan,
+                backgroundColor: ["oklch(56% 0.16 25 / 0.88)", "oklch(54% 0.12 210 / 0.82)"],
+                borderColor: [chartColors.Zespa, chartColors.Bodyfriend],
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: baseChartOptions({
+            plugins: {
+              ...baseChartOptions().plugins,
+              legend: { display: false },
+              tooltip: {
+                ...baseChartOptions().plugins.tooltip,
+                callbacks: {
+                  label: (context) => {
+                    const man = Number(context.raw) || 0;
+                    return `평균가: ${man.toLocaleString("ko-KR")}만원 (${(man * 10000).toLocaleString("ko-KR")}원)`;
+                  },
+                },
+              },
+            },
+            scales: {
+              x: { ticks: { color: chartColors.neutral, font: { weight: 800 } }, grid: { display: false } },
+              y: {
+                beginAtZero: true,
+                title: { display: true, text: "만원", color: chartColors.neutral, font: { weight: 800 } },
+                ticks: {
+                  color: chartColors.neutral,
+                  font: { weight: 700 },
+                  callback: (value) => `${Number(value).toLocaleString("ko-KR")}만원`,
+                },
+                grid: { color: "oklch(83% 0.026 238 / 0.55)" },
+              },
             },
           }),
         });
@@ -928,9 +1050,9 @@
         const bodySocial = socialData?.brands?.Bodyfriend || {};
         const category = socialData?.brands?.Category || {};
         const stats = [
-          ["상품 노출 우위", `${(zespa.product_count || 0) - (body.product_count || 0) >= 0 ? "제스파" : "바디프랜드"}`, `${formatNumber(zespa.product_count || 0)} vs ${formatNumber(body.product_count || 0)}개`],
-          ["소셜 언급 우위", `${(zespaSocial.mention_count || 0) - (bodySocial.mention_count || 0) >= 0 ? "제스파" : "바디프랜드"}`, `${formatNumber(zespaSocial.mention_count || 0)} vs ${formatNumber(bodySocial.mention_count || 0)}건`],
-          ["평균가 격차", `${shortPrice(body.avg_price)}`, `바디프랜드 평균 · 제스파 ${shortPrice(zespa.avg_price)}`],
+          ["상품 노출 우위", `${(zespa.product_count || 0) - (body.product_count || 0) >= 0 ? "제스파" : "바디프렌드"}`, `${formatNumber(zespa.product_count || 0)} vs ${formatNumber(body.product_count || 0)}개`],
+          ["소셜 언급 우위", `${(zespaSocial.mention_count || 0) - (bodySocial.mention_count || 0) >= 0 ? "제스파" : "바디프렌드"}`, `${formatNumber(zespaSocial.mention_count || 0)} vs ${formatNumber(bodySocial.mention_count || 0)}건`],
+          ["평균가 격차", `${shortPrice(body.avg_price)}`, `바디프렌드 평균 · 제스파 ${shortPrice(zespa.avg_price)}`],
           ["카테고리 수요", formatNumber(category.mention_count || 0), "브랜드 밖 추천/선물/안마의자 탐색"],
         ];
         container.innerHTML = stats
@@ -951,7 +1073,7 @@
 
         const nodes = [
           { id: "zespa", label: "제스파", count: socialData?.brands?.Zespa?.mention_count || 0, x: 170, y: 145, r: 42, color: chartColors.Zespa },
-          { id: "body", label: "바디프랜드", count: socialData?.brands?.Bodyfriend?.mention_count || 0, x: 170, y: 300, r: 38, color: chartColors.Bodyfriend },
+          { id: "body", label: "바디프렌드", count: socialData?.brands?.Bodyfriend?.mention_count || 0, x: 170, y: 300, r: 38, color: chartColors.Bodyfriend },
           { id: "category", label: "카테고리 수요", count: socialData?.brands?.Category?.mention_count || 0, x: 535, y: 220, r: 48, color: chartColors.Category },
           ...platforms.map(([label, count], index) => ({ id: `platform-${label}`, label, count, x: 405 + index * 105, y: 68, r: 20 + Math.min(count, 80) / 8, color: "oklch(62% 0.045 245)" })),
           ...clusters.map(([label, count], index) => ({ id: `cluster-${label}`, label, count, x: 770 + (index % 2) * 155, y: 150 + Math.floor(index / 2) * 88, r: 22 + Math.min(count, 60) / 7, color: index % 2 ? chartColors.Bodyfriend : chartColors.Zespa })),
@@ -1017,7 +1139,7 @@
 
       function renderCharts(productData, socialData) {
         renderScoreboard(productData, socialData);
-        buildScaleChart(productData, socialData);
+        buildUnitComparisonCharts(productData, socialData);
         buildSentimentChart(socialData);
         buildRadarChart(socialData);
         buildClusterChart(socialData);
