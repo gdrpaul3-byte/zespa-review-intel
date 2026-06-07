@@ -92,7 +92,8 @@
 
       .meta-row,
       .source-row,
-      .product-row {
+      .product-row,
+      .mention-row {
         display: flex;
         justify-content: space-between;
         gap: var(--space-lg);
@@ -213,28 +214,33 @@
 
       .product-list,
       .source-list,
+      .mention-list,
       .keywords {
         display: grid;
         gap: var(--space-sm);
       }
 
-      .product-row {
+      .product-row,
+      .mention-row {
         padding: var(--space-sm) 0;
         border-top: 1px solid var(--line);
       }
 
-      .product-title {
+      .product-title,
+      .mention-title {
         min-width: 0;
         color: var(--ink);
         font-weight: 700;
         text-decoration: none;
       }
 
-      .product-title:hover {
+      .product-title:hover,
+      .mention-title:hover {
         text-decoration: underline;
       }
 
-      .product-meta {
+      .product-meta,
+      .mention-meta {
         flex: 0 0 auto;
         color: var(--muted);
         font-size: 0.85rem;
@@ -313,7 +319,8 @@
         .section-head,
         .meta-row,
         .source-row,
-        .product-row {
+        .product-row,
+        .mention-row {
           align-items: flex-start;
         }
 
@@ -350,6 +357,10 @@
           <div class="meta-row">
             <span class="label">History rows</span>
             <span class="value" id="history-count">0</span>
+          </div>
+          <div class="meta-row">
+            <span class="label">Social rows</span>
+            <span class="value" id="social-row-count">0</span>
           </div>
         </div>
       </header>
@@ -400,6 +411,68 @@
             <tbody id="source-status"></tbody>
           </table>
         </section>
+
+        <section>
+          <div class="section-head">
+            <h2>Social & Community Voice</h2>
+            <span class="label">Public search, community, video, RSS</span>
+          </div>
+          <div class="grid" id="social-brands"></div>
+        </section>
+
+        <section class="grid">
+          <div class="panel">
+            <div class="section-head">
+              <h2>Platform Coverage</h2>
+            </div>
+            <div class="source-list" id="social-platforms"></div>
+          </div>
+          <div class="panel">
+            <div class="section-head">
+              <h2>Why People Mention It</h2>
+            </div>
+            <div class="chips" id="social-types"></div>
+          </div>
+          <div class="panel">
+            <div class="section-head">
+              <h2>Sentiment Split</h2>
+            </div>
+            <div class="chips" id="social-sentiment"></div>
+          </div>
+          <div class="panel">
+            <div class="section-head">
+              <h2>Opportunity Map</h2>
+            </div>
+            <div class="chips" id="social-clusters"></div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="section-head">
+            <h2>Fresh Signals</h2>
+            <span class="label">Recent priority mentions</span>
+          </div>
+          <div class="mention-list" id="fresh-signals"></div>
+        </section>
+
+        <section class="panel">
+          <div class="section-head">
+            <h2>Social Source Status</h2>
+            <span class="label">No-login public attempts</span>
+          </div>
+          <table class="status-table">
+            <thead>
+              <tr>
+                <th>Source</th>
+                <th>Query</th>
+                <th>Status</th>
+                <th>Rows</th>
+                <th>Error</th>
+              </tr>
+            </thead>
+            <tbody id="social-source-status"></tbody>
+          </table>
+        </section>
       </main>
     </div>
 
@@ -411,9 +484,10 @@
       };
 
       const dataPaths = ["../data/latest.json", "data/latest.json"];
+      const socialDataPaths = ["../data/social_latest.json", "data/social_latest.json"];
 
-      async function loadLatest() {
-        for (const path of dataPaths) {
+      async function loadJson(paths) {
+        for (const path of paths) {
           try {
             const response = await fetch(path, { cache: "no-store" });
             if (response.ok) return response.json();
@@ -423,6 +497,9 @@
         }
         return null;
       }
+
+      const loadLatest = () => loadJson(dataPaths);
+      const loadSocialLatest = () => loadJson(socialDataPaths);
 
       function renderBrands(brands) {
         const container = document.getElementById("brands");
@@ -500,6 +577,98 @@
         }
       }
 
+      function renderSocialBrands(brands) {
+        const container = document.getElementById("social-brands");
+        container.innerHTML = "";
+        Object.entries(brands || {}).forEach(([brand, item]) => {
+          const card = document.createElement("article");
+          card.className = "brand-card";
+          const sentiment = Object.entries(item.sentiment || {})
+            .map(([label, count]) => `${label} ${count}`)
+            .join(" · ");
+          const types = Object.entries(item.mention_types || {})
+            .slice(0, 4)
+            .map(([label, count]) => `${label} ${count}`)
+            .join(" · ");
+          card.innerHTML = `
+            <div class="brand-top">
+              <h3 class="brand-name">${brand}</h3>
+              <div class="brand-badge">${item.mention_count || 0} mentions</div>
+            </div>
+            <div class="metrics">
+              <div class="metric"><span class="label">Positive</span><span class="metric-value">${(item.sentiment || {}).positive || 0}</span></div>
+              <div class="metric"><span class="label">Negative</span><span class="metric-value">${(item.sentiment || {}).negative || 0}</span></div>
+              <div class="metric"><span class="label">Mixed</span><span class="metric-value">${(item.sentiment || {}).mixed || 0}</span></div>
+              <div class="metric"><span class="label">Neutral</span><span class="metric-value">${(item.sentiment || {}).neutral || 0}</span></div>
+            </div>
+            <div class="product-list">
+              <div class="product-row"><span class="label">Sentiment</span><span class="product-meta">${sentiment || "n/a"}</span></div>
+              <div class="product-row"><span class="label">Top reasons</span><span class="product-meta">${types || "n/a"}</span></div>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+        if (!container.children.length) container.innerHTML = '<div class="panel"><span class="label">No social rows yet</span></div>';
+      }
+
+      function renderCountChips(id, data) {
+        const container = document.getElementById(id);
+        container.innerHTML = "";
+        Object.entries(data || {}).forEach(([label, count]) => {
+          const chip = document.createElement("span");
+          chip.className = "chip";
+          chip.textContent = `${label} ${count}`;
+          container.appendChild(chip);
+        });
+        if (!container.children.length) container.innerHTML = '<span class="label">No rows yet</span>';
+      }
+
+      function renderSocialPlatforms(platforms) {
+        const container = document.getElementById("social-platforms");
+        container.innerHTML = "";
+        Object.entries(platforms || {}).forEach(([platform, count]) => {
+          const row = document.createElement("div");
+          row.className = "source-row";
+          row.innerHTML = `<span class="source-name">${platform}</span><span class="value">${count} mentions</span>`;
+          container.appendChild(row);
+        });
+        if (!container.children.length) container.innerHTML = '<span class="label">No platform rows yet</span>';
+      }
+
+      function renderFreshSignals(rows) {
+        const container = document.getElementById("fresh-signals");
+        container.innerHTML = "";
+        (rows || []).forEach((item) => {
+          const row = document.createElement("div");
+          row.className = "mention-row";
+          const meta = `${item.platform || ""} · ${item.brand || ""} · ${item.sentiment || "unknown"} · ${item.mention_type || "기타"}`;
+          row.innerHTML = `<a class="mention-title" href="${item.url || "#"}" target="_blank" rel="noreferrer">${item.title || "Untitled mention"}</a><span class="mention-meta">${meta}</span>`;
+          container.appendChild(row);
+        });
+        if (!container.children.length) container.innerHTML = '<span class="label">No priority signals yet</span>';
+      }
+
+      function renderSocialStatus(status) {
+        const container = document.getElementById("social-source-status");
+        container.innerHTML = "";
+        const rows = (status?.sources || []).slice(-50).reverse();
+        rows.forEach((item) => {
+          const tr = document.createElement("tr");
+          const state = item.blocked ? "blocked" : item.rows_found > 0 ? "ok" : "empty";
+          tr.innerHTML = `
+            <td>${item.source || ""}</td>
+            <td>${item.query || ""}</td>
+            <td class="${state === "blocked" ? "blocked" : state === "ok" ? "ok" : ""}">${state}</td>
+            <td>${item.rows_found ?? 0}</td>
+            <td>${item.error || ""}</td>
+          `;
+          container.appendChild(tr);
+        });
+        if (!container.children.length) {
+          container.innerHTML = '<tr><td colspan="5">No social source attempts recorded.</td></tr>';
+        }
+      }
+
       loadLatest().then((latest) => {
         if (!latest) {
           document.getElementById("updated").textContent = "No data";
@@ -514,6 +683,28 @@
         renderChannels(latest.channels);
         renderKeywords(latest.keywords);
         renderStatus(latest.source_status);
+      });
+
+      loadSocialLatest().then((latest) => {
+        if (!latest) {
+          document.getElementById("social-row-count").textContent = "No data";
+          renderSocialBrands({});
+          renderSocialPlatforms({});
+          renderCountChips("social-types", {});
+          renderCountChips("social-sentiment", {});
+          renderCountChips("social-clusters", {});
+          renderFreshSignals([]);
+          renderSocialStatus(null);
+          return;
+        }
+        document.getElementById("social-row-count").textContent = formatNumber(latest.row_count);
+        renderSocialBrands(latest.brands);
+        renderSocialPlatforms(latest.platforms);
+        renderCountChips("social-types", latest.mention_types);
+        renderCountChips("social-sentiment", latest.sentiment);
+        renderCountChips("social-clusters", latest.product_clusters);
+        renderFreshSignals(latest.fresh_signals);
+        renderSocialStatus(latest.source_status);
       });
     </script>
   </body>
