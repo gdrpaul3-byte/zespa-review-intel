@@ -3,21 +3,25 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Zespa Review Intelligence</title>
+    <title>Zespa Visual Command Center</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700&display=swap");
-
       :root {
-        --ink: oklch(18% 0.018 250);
-        --muted: oklch(48% 0.025 250);
-        --paper: oklch(97% 0.008 248);
-        --panel: oklch(99% 0.006 248);
-        --line: oklch(87% 0.018 248);
-        --steel: oklch(36% 0.07 245);
-        --signal: oklch(60% 0.16 34);
-        --cool: oklch(61% 0.11 202);
-        --green: oklch(58% 0.12 150);
-        --warn: oklch(65% 0.14 70);
+        --ink: oklch(18% 0.025 248);
+        --muted: oklch(47% 0.032 248);
+        --paper: oklch(96% 0.012 238);
+        --panel: oklch(99% 0.008 238);
+        --soft: oklch(92% 0.018 238);
+        --line: oklch(83% 0.026 238);
+        --zespa: oklch(56% 0.16 25);
+        --zespa-soft: oklch(88% 0.07 25);
+        --body: oklch(54% 0.12 210);
+        --body-soft: oklch(87% 0.06 210);
+        --category: oklch(60% 0.13 143);
+        --risk: oklch(52% 0.15 12);
+        --positive: oklch(58% 0.13 145);
+        --neutral: oklch(62% 0.045 245);
+        --mixed: oklch(62% 0.14 72);
         --space-xs: 4px;
         --space-sm: 8px;
         --space-md: 12px;
@@ -35,59 +39,76 @@
       body {
         margin: 0;
         background:
-          linear-gradient(90deg, color-mix(in oklch, var(--line), transparent 70%) 1px, transparent 1px) 0 0 / 56px 56px,
-          linear-gradient(color-mix(in oklch, var(--line), transparent 72%) 1px, transparent 1px) 0 0 / 56px 56px,
+          linear-gradient(90deg, color-mix(in oklch, var(--line), transparent 70%) 1px, transparent 1px) 0 0 / 64px 64px,
+          linear-gradient(color-mix(in oklch, var(--line), transparent 74%) 1px, transparent 1px) 0 0 / 64px 64px,
+          radial-gradient(circle at 20% 0%, color-mix(in oklch, var(--zespa-soft), transparent 46%), transparent 34rem),
+          radial-gradient(circle at 88% 10%, color-mix(in oklch, var(--body-soft), transparent 48%), transparent 35rem),
           var(--paper);
         color: var(--ink);
-        font-family: "Noto Sans KR", sans-serif;
+        font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
         letter-spacing: 0;
       }
 
       .shell {
-        width: min(1440px, calc(100% - 32px));
+        width: min(1500px, calc(100% - 32px));
         margin: 0 auto;
         padding: var(--space-2xl) 0 var(--space-3xl);
-      }
-
-      header {
-        display: grid;
-        grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
-        gap: var(--space-2xl);
-        align-items: end;
-        padding-bottom: var(--space-xl);
-        border-bottom: 1px solid var(--line);
       }
 
       h1,
       h2,
       h3,
-      .metric-value {
-        font-family: "Gabarito", "Noto Sans KR", sans-serif;
+      .metric-value,
+      .stat-value,
+      .node-label {
+        font-family: "Arial Narrow", "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+      }
+
+      header {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: var(--space-xl);
+        align-items: end;
+        margin-bottom: var(--space-xl);
       }
 
       h1 {
-        max-width: 760px;
         margin: 0;
-        font-size: clamp(2.25rem, 6vw, 5.25rem);
+        font-size: clamp(2.3rem, 5vw, 5.4rem);
         line-height: 0.94;
         letter-spacing: 0;
       }
 
-      .subhead {
-        max-width: 68ch;
-        margin: var(--space-lg) 0 0;
+      .eyebrow,
+      .label {
         color: var(--muted);
-        font-size: 1rem;
-        line-height: 1.65;
+        font-size: 0.76rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .subhead {
+        max-width: 70ch;
+        margin: var(--space-md) 0 0;
+        color: var(--muted);
+        font-size: 0.98rem;
+        line-height: 1.7;
+      }
+
+      .meta-panel,
+      .panel,
+      .brand-card {
+        border: 1px solid var(--line);
+        background: color-mix(in oklch, var(--panel), transparent 4%);
       }
 
       .meta-panel {
+        min-width: 300px;
         display: grid;
-        gap: var(--space-md);
+        gap: var(--space-sm);
         padding: var(--space-lg);
-        border: 1px solid var(--ink);
-        background: var(--panel);
-        box-shadow: 8px 8px 0 color-mix(in oklch, var(--steel), transparent 80%);
+        box-shadow: 8px 8px 0 color-mix(in oklch, var(--ink), transparent 88%);
       }
 
       .meta-row,
@@ -100,36 +121,41 @@
         align-items: baseline;
       }
 
-      .label {
-        color: var(--muted);
-        font-size: 0.78rem;
-        font-weight: 700;
-        text-transform: uppercase;
-      }
-
       .value {
-        font-weight: 700;
+        font-weight: 800;
         text-align: right;
       }
 
       .notice {
         display: none;
-        margin-top: var(--space-xl);
+        margin: var(--space-lg) 0;
         padding: var(--space-lg);
-        border: 1px solid var(--warn);
-        background: color-mix(in oklch, var(--warn), white 82%);
-        font-weight: 700;
+        border: 1px solid var(--mixed);
+        background: color-mix(in oklch, var(--mixed), white 84%);
+        font-weight: 800;
       }
 
       main {
         display: grid;
         gap: var(--space-2xl);
-        margin-top: var(--space-2xl);
       }
 
       section {
         display: grid;
         gap: var(--space-lg);
+      }
+
+      h2,
+      h3 {
+        margin: 0;
+      }
+
+      h2 {
+        font-size: 1.35rem;
+      }
+
+      h3 {
+        font-size: 1rem;
       }
 
       .section-head {
@@ -139,9 +165,119 @@
         align-items: end;
       }
 
-      h2 {
-        margin: 0;
-        font-size: 1.35rem;
+      .command-center {
+        display: grid;
+        gap: var(--space-lg);
+        padding: var(--space-xl);
+        border: 1px solid var(--ink);
+        background:
+          linear-gradient(135deg, color-mix(in oklch, var(--panel), transparent 2%), color-mix(in oklch, var(--soft), transparent 18%)),
+          var(--panel);
+        box-shadow: 10px 10px 0 color-mix(in oklch, var(--ink), transparent 86%);
+      }
+
+      .scoreboard {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: var(--space-md);
+      }
+
+      .stat {
+        min-height: 104px;
+        display: grid;
+        align-content: space-between;
+        gap: var(--space-sm);
+        padding: var(--space-md);
+        border: 1px solid var(--line);
+        background: color-mix(in oklch, var(--paper), white 42%);
+      }
+
+      .stat-value {
+        font-size: clamp(1.55rem, 3vw, 2.45rem);
+        font-weight: 900;
+      }
+
+      .stat-note {
+        color: var(--muted);
+        font-size: 0.82rem;
+        font-weight: 700;
+      }
+
+      .visual-grid {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: var(--space-lg);
+      }
+
+      .visual-grid.secondary {
+        grid-template-columns: 0.9fr 1.1fr;
+      }
+
+      .panel {
+        min-width: 0;
+        padding: var(--space-lg);
+      }
+
+      .chart-panel {
+        min-height: 360px;
+        display: grid;
+        grid-template-rows: auto minmax(240px, 1fr);
+        gap: var(--space-md);
+      }
+
+      .chart-wrap {
+        position: relative;
+        min-height: 270px;
+      }
+
+      .network-panel {
+        min-height: 430px;
+      }
+
+      .network-wrap {
+        min-height: 360px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        background:
+          linear-gradient(90deg, color-mix(in oklch, var(--line), transparent 78%) 1px, transparent 1px) 0 0 / 36px 36px,
+          linear-gradient(color-mix(in oklch, var(--line), transparent 82%) 1px, transparent 1px) 0 0 / 36px 36px,
+          color-mix(in oklch, var(--panel), var(--paper) 36%);
+      }
+
+      #network-map {
+        display: block;
+        width: 100%;
+        height: 100%;
+        min-height: 360px;
+      }
+
+      .network-edge {
+        stroke: color-mix(in oklch, var(--muted), transparent 36%);
+        stroke-linecap: round;
+      }
+
+      .network-node {
+        stroke: var(--panel);
+        stroke-width: 2;
+      }
+
+      .node-label {
+        fill: var(--ink);
+        font-size: 13px;
+        font-weight: 800;
+        paint-order: stroke;
+        stroke: color-mix(in oklch, var(--panel), white 26%);
+        stroke-width: 4px;
+        stroke-linejoin: round;
+      }
+
+      .node-count {
+        fill: var(--muted);
+        font-size: 11px;
+        font-weight: 800;
+        paint-order: stroke;
+        stroke: color-mix(in oklch, var(--panel), white 26%);
+        stroke-width: 4px;
       }
 
       .grid {
@@ -150,16 +286,10 @@
         gap: var(--space-lg);
       }
 
-      .brand-card,
-      .panel {
-        background: var(--panel);
-        border: 1px solid var(--line);
-      }
-
       .brand-card {
         display: grid;
-        gap: var(--space-xl);
-        padding: var(--space-xl);
+        gap: var(--space-lg);
+        padding: var(--space-lg);
       }
 
       .brand-top {
@@ -170,25 +300,23 @@
       }
 
       .brand-name {
-        margin: 0;
-        font-size: 2rem;
+        font-size: 1.6rem;
       }
 
       .brand-badge {
-        min-width: 96px;
+        min-width: 92px;
         padding: var(--space-sm) var(--space-md);
         border: 1px solid var(--ink);
-        font-family: "Gabarito", sans-serif;
-        font-weight: 800;
+        font-weight: 900;
         text-align: center;
       }
 
-      .brand-card:nth-child(1) .brand-badge {
-        background: color-mix(in oklch, var(--signal), white 68%);
+      .brand-card[data-brand="Zespa"] .brand-badge {
+        background: var(--zespa-soft);
       }
 
-      .brand-card:nth-child(2) .brand-badge {
-        background: color-mix(in oklch, var(--cool), white 68%);
+      .brand-card[data-brand="Bodyfriend"] .brand-badge {
+        background: var(--body-soft);
       }
 
       .metrics {
@@ -198,18 +326,18 @@
       }
 
       .metric {
-        min-height: 92px;
+        min-height: 84px;
         display: grid;
         align-content: end;
         gap: var(--space-xs);
         padding: var(--space-md);
-        background: color-mix(in oklch, var(--paper), var(--panel) 42%);
+        background: color-mix(in oklch, var(--paper), white 42%);
         border: 1px solid var(--line);
       }
 
       .metric-value {
-        font-size: 1.7rem;
-        font-weight: 800;
+        font-size: 1.55rem;
+        font-weight: 900;
       }
 
       .product-list,
@@ -230,7 +358,7 @@
       .mention-title {
         min-width: 0;
         color: var(--ink);
-        font-weight: 700;
+        font-weight: 800;
         text-decoration: none;
       }
 
@@ -243,12 +371,8 @@
       .mention-meta {
         flex: 0 0 auto;
         color: var(--muted);
-        font-size: 0.85rem;
-        font-weight: 700;
-      }
-
-      .panel {
-        padding: var(--space-xl);
+        font-size: 0.84rem;
+        font-weight: 800;
       }
 
       .source-row {
@@ -257,9 +381,8 @@
       }
 
       .source-name {
-        font-family: "Gabarito", sans-serif;
-        font-size: 1.2rem;
-        font-weight: 800;
+        font-size: 1.05rem;
+        font-weight: 900;
       }
 
       .chips {
@@ -271,9 +394,13 @@
       .chip {
         padding: 7px 10px;
         border: 1px solid var(--line);
-        background: color-mix(in oklch, var(--green), white 84%);
+        background: color-mix(in oklch, var(--category), white 86%);
         font-size: 0.86rem;
-        font-weight: 700;
+        font-weight: 800;
+      }
+
+      .audit {
+        margin-top: var(--space-xl);
       }
 
       .status-table {
@@ -297,23 +424,45 @@
       }
 
       .ok {
-        color: var(--green);
-        font-weight: 800;
+        color: var(--positive);
+        font-weight: 900;
       }
 
       .blocked {
-        color: var(--signal);
-        font-weight: 800;
+        color: var(--risk);
+        font-weight: 900;
       }
 
-      @media (max-width: 780px) {
-        header {
+      @media (max-width: 980px) {
+        header,
+        .visual-grid,
+        .visual-grid.secondary {
           grid-template-columns: 1fr;
         }
 
+        .scoreboard {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .meta-panel {
+          min-width: 0;
+        }
+      }
+
+      @media (max-width: 680px) {
         .shell {
-          width: min(100% - 20px, 1440px);
+          width: min(100% - 20px, 1500px);
           padding-top: var(--space-lg);
+        }
+
+        .command-center {
+          padding: var(--space-md);
+          box-shadow: none;
+        }
+
+        .scoreboard,
+        .metrics {
+          grid-template-columns: 1fr;
         }
 
         .section-head,
@@ -324,8 +473,17 @@
           align-items: flex-start;
         }
 
-        .metrics {
-          grid-template-columns: 1fr;
+        .product-row,
+        .mention-row {
+          display: grid;
+        }
+
+        .chart-panel {
+          min-height: 320px;
+        }
+
+        .chart-wrap {
+          min-height: 240px;
         }
 
         .status-table {
@@ -340,62 +498,115 @@
     <div class="shell">
       <header>
         <div>
-          <h1>Zespa vs Bodyfriend Review Intel</h1>
-          <p class="subhead">
-            한국 쇼핑 검색에서 공개적으로 확인된 상품 카드만 집계합니다. 차단되거나 파싱할 수 없는 채널은 상태로 남기고, 상품/리뷰 데이터는 만들지 않습니다.
-          </p>
+          <div class="eyebrow">Review Intel · 공개 데이터 대시보드</div>
+          <h1>Visual Command Center</h1>
+          <p class="subhead">제스파와 바디프랜드를 같은 시각 프레임에서 비교합니다. 상단은 의사결정용 시각화, 하단은 원천 수집 상태와 테이블 검증 영역입니다.</p>
         </div>
         <div class="meta-panel" aria-live="polite">
           <div class="meta-row">
-            <span class="label">Updated KST</span>
+            <span class="label">업데이트 KST</span>
             <span class="value" id="updated">Loading</span>
           </div>
           <div class="meta-row">
-            <span class="label">Latest rows</span>
+            <span class="label">상품 행</span>
             <span class="value" id="row-count">0</span>
           </div>
           <div class="meta-row">
-            <span class="label">History rows</span>
+            <span class="label">누적 상품 행</span>
             <span class="value" id="history-count">0</span>
           </div>
           <div class="meta-row">
-            <span class="label">Social rows</span>
+            <span class="label">소셜 행</span>
             <span class="value" id="social-row-count">0</span>
           </div>
         </div>
       </header>
 
-      <div class="notice" id="notice">
-        No collected product data is available yet. Run the local smoke test, then refresh this page from a local server.
-      </div>
+      <div class="notice" id="notice">수집된 상품 데이터가 없습니다. 로컬 수집을 실행한 뒤 다시 열어 주세요.</div>
 
       <main>
-        <section>
+        <section class="command-center" aria-labelledby="command-title">
           <div class="section-head">
-            <h2>Brand Position</h2>
-            <span class="label">Product count, rating, review volume, price</span>
+            <div>
+              <div class="eyebrow">Zespa vs Bodyfriend</div>
+              <h2 id="command-title">브랜드 비교 관제판</h2>
+            </div>
+            <span class="label">상품 · 소셜 · 감성 · 기회 노드</span>
+          </div>
+
+          <div class="scoreboard" id="scoreboard"></div>
+
+          <div class="visual-grid">
+            <article class="panel chart-panel">
+              <div class="section-head">
+                <h3>브랜드 스케일 비교</h3>
+                <span class="label">상품수 · 언급수 · 평균가(10만원)</span>
+              </div>
+              <div class="chart-wrap"><canvas id="brand-scale-chart"></canvas></div>
+            </article>
+
+            <article class="panel chart-panel">
+              <div class="section-head">
+                <h3>감성 분포</h3>
+                <span class="label">브랜드별 누적 막대</span>
+              </div>
+              <div class="chart-wrap"><canvas id="sentiment-chart"></canvas></div>
+            </article>
+          </div>
+
+          <div class="visual-grid secondary">
+            <article class="panel chart-panel">
+              <div class="section-head">
+                <h3>기회 차원 레이더</h3>
+                <span class="label">소셜 클러스터/언급유형 기반</span>
+              </div>
+              <div class="chart-wrap"><canvas id="opportunity-radar"></canvas></div>
+            </article>
+
+            <article class="panel chart-panel">
+              <div class="section-head">
+                <h3>수요 클러스터</h3>
+                <span class="label">전체 소셜 상위 항목</span>
+              </div>
+              <div class="chart-wrap"><canvas id="cluster-chart"></canvas></div>
+            </article>
+          </div>
+
+          <article class="panel network-panel">
+            <div class="section-head">
+              <h3>관계 네트워크</h3>
+              <span class="label">브랜드 · 카테고리 수요 · 플랫폼 · 클러스터 · 리스크/기회</span>
+            </div>
+            <div class="network-wrap"><svg id="network-map" role="img" aria-label="소셜 데이터 관계 네트워크"></svg></div>
+          </article>
+        </section>
+
+        <section class="audit">
+          <div class="section-head">
+            <h2>상품 감사 테이블</h2>
+            <span class="label">기존 상품 목록 유지</span>
           </div>
           <div class="grid" id="brands"></div>
         </section>
 
-        <section class="grid">
+        <section class="grid audit">
           <div class="panel">
             <div class="section-head">
-              <h2>Channel Coverage</h2>
+              <h2>채널 커버리지</h2>
             </div>
             <div class="source-list" id="channels"></div>
           </div>
           <div class="panel">
             <div class="section-head">
-              <h2>Korean Keyword Counts</h2>
+              <h2>키워드 카운트</h2>
             </div>
             <div class="chips" id="keywords"></div>
           </div>
         </section>
 
-        <section class="panel">
+        <section class="panel audit">
           <div class="section-head">
-            <h2>Source Status</h2>
+            <h2>상품 수집 상태</h2>
             <span class="label">Latest collection attempts</span>
           </div>
           <table class="status-table">
@@ -412,52 +623,52 @@
           </table>
         </section>
 
-        <section>
+        <section class="audit">
           <div class="section-head">
-            <h2>Social & Community Voice</h2>
+            <h2>소셜 감사 테이블</h2>
             <span class="label">Public search, community, video, RSS</span>
           </div>
           <div class="grid" id="social-brands"></div>
         </section>
 
-        <section class="grid">
+        <section class="grid audit">
           <div class="panel">
             <div class="section-head">
-              <h2>Platform Coverage</h2>
+              <h2>플랫폼 커버리지</h2>
             </div>
             <div class="source-list" id="social-platforms"></div>
           </div>
           <div class="panel">
             <div class="section-head">
-              <h2>Why People Mention It</h2>
+              <h2>언급 이유</h2>
             </div>
             <div class="chips" id="social-types"></div>
           </div>
           <div class="panel">
             <div class="section-head">
-              <h2>Sentiment Split</h2>
+              <h2>감성 요약</h2>
             </div>
             <div class="chips" id="social-sentiment"></div>
           </div>
           <div class="panel">
             <div class="section-head">
-              <h2>Opportunity Map</h2>
+              <h2>제품/수요 클러스터</h2>
             </div>
             <div class="chips" id="social-clusters"></div>
           </div>
         </section>
 
-        <section class="panel">
+        <section class="panel audit">
           <div class="section-head">
-            <h2>Fresh Signals</h2>
+            <h2>우선 신호</h2>
             <span class="label">Recent priority mentions</span>
           </div>
           <div class="mention-list" id="fresh-signals"></div>
         </section>
 
-        <section class="panel">
+        <section class="panel audit">
           <div class="section-head">
-            <h2>Social Source Status</h2>
+            <h2>소셜 수집 상태</h2>
             <span class="label">No-login public attempts</span>
           </div>
           <table class="status-table">
@@ -477,14 +688,42 @@
     </div>
 
     <script>
+      const brandOrder = ["Zespa", "Bodyfriend"];
+      const brandKorean = { Zespa: "제스파", Bodyfriend: "바디프랜드", Category: "카테고리 수요" };
+      const chartColors = {
+        Zespa: "oklch(56% 0.16 25)",
+        Bodyfriend: "oklch(54% 0.12 210)",
+        Category: "oklch(60% 0.13 143)",
+        neutral: "oklch(62% 0.045 245)",
+        positive: "oklch(58% 0.13 145)",
+        negative: "oklch(52% 0.15 12)",
+        mixed: "oklch(62% 0.14 72)",
+      };
+      const chartRegistry = {};
+
       const formatNumber = (value) => {
         if (value === null || value === undefined || value === "") return "n/a";
         const number = Number(value);
         return Number.isFinite(number) ? number.toLocaleString("ko-KR") : value;
       };
 
-      const dataPaths = ["../data/latest.json", "data/latest.json"];
-      const socialDataPaths = ["../data/social_latest.json", "data/social_latest.json"];
+      const escapeHtml = (value) =>
+        String(value ?? "")
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+
+      const shortPrice = (value) => {
+        const number = Number(value);
+        if (!Number.isFinite(number) || number <= 0) return "n/a";
+        if (number >= 100000000) return `${(number / 100000000).toFixed(1)}억`;
+        return `${Math.round(number / 10000).toLocaleString("ko-KR")}만원`;
+      };
+
+      const dataPaths = ["data/latest.json", "../data/latest.json"];
+      const socialDataPaths = ["data/social_latest.json", "../data/social_latest.json"];
 
       async function loadJson(paths) {
         for (const path of paths) {
@@ -501,32 +740,318 @@
       const loadLatest = () => loadJson(dataPaths);
       const loadSocialLatest = () => loadJson(socialDataPaths);
 
+      function topEntries(data, limit = 8) {
+        return Object.entries(data || {})
+          .sort((a, b) => Number(b[1]) - Number(a[1]))
+          .slice(0, limit);
+      }
+
+      function normalizeSeries(values) {
+        const max = Math.max(...values.map((value) => Number(value) || 0), 1);
+        return values.map((value) => Math.round(((Number(value) || 0) / max) * 100));
+      }
+
+      function createChart(id, config) {
+        const canvas = document.getElementById(id);
+        if (!canvas || !window.Chart) return;
+        chartRegistry[id]?.destroy();
+        chartRegistry[id] = new Chart(canvas, config);
+      }
+
+      function baseChartOptions(extra = {}) {
+        return {
+          responsive: true,
+          maintainAspectRatio: false,
+          animation: { duration: 550 },
+          plugins: {
+            legend: {
+              labels: {
+                boxWidth: 12,
+                boxHeight: 12,
+                color: chartColors.neutral,
+                font: { family: "'Noto Sans KR', sans-serif", weight: 700 },
+              },
+            },
+            tooltip: {
+              backgroundColor: "oklch(20% 0.025 248)",
+              titleColor: "oklch(96% 0.012 238)",
+              bodyColor: "oklch(96% 0.012 238)",
+              padding: 12,
+            },
+          },
+          scales: {
+            x: {
+              ticks: { color: chartColors.neutral, font: { weight: 700 } },
+              grid: { color: "oklch(83% 0.026 238 / 0.55)" },
+            },
+            y: {
+              ticks: { color: chartColors.neutral, font: { weight: 700 } },
+              grid: { color: "oklch(83% 0.026 238 / 0.55)" },
+            },
+          },
+          ...extra,
+        };
+      }
+
+      function buildScaleChart(productData, socialData) {
+        const productCounts = brandOrder.map((brand) => productData?.brands?.[brand]?.product_count || 0);
+        const socialMentions = brandOrder.map((brand) => socialData?.brands?.[brand]?.mention_count || 0);
+        const priceTenMan = brandOrder.map((brand) => {
+          const price = Number(productData?.brands?.[brand]?.avg_price || 0);
+          return Number((price / 100000).toFixed(1));
+        });
+
+        createChart("brand-scale-chart", {
+          type: "bar",
+          data: {
+            labels: brandOrder.map((brand) => brandKorean[brand]),
+            datasets: [
+              { label: "상품수", data: productCounts, backgroundColor: "oklch(56% 0.16 25 / 0.88)", borderColor: chartColors.Zespa, borderWidth: 1 },
+              { label: "소셜 언급수", data: socialMentions, backgroundColor: "oklch(54% 0.12 210 / 0.82)", borderColor: chartColors.Bodyfriend, borderWidth: 1 },
+              { label: "평균가(10만원)", data: priceTenMan, backgroundColor: "oklch(60% 0.13 143 / 0.78)", borderColor: chartColors.Category, borderWidth: 1 },
+            ],
+          },
+          options: baseChartOptions({
+            scales: {
+              x: { ticks: { color: chartColors.neutral, font: { weight: 800 } }, grid: { display: false } },
+              y: { beginAtZero: true, ticks: { color: chartColors.neutral, font: { weight: 700 } }, grid: { color: "oklch(83% 0.026 238 / 0.55)" } },
+            },
+          }),
+        });
+      }
+
+      function buildSentimentChart(socialData) {
+        const sentimentLabels = [
+          ["positive", "긍정"],
+          ["neutral", "중립"],
+          ["mixed", "혼합"],
+          ["negative", "부정"],
+        ];
+        createChart("sentiment-chart", {
+          type: "bar",
+          data: {
+            labels: brandOrder.map((brand) => brandKorean[brand]),
+            datasets: sentimentLabels.map(([key, label]) => ({
+              label,
+              data: brandOrder.map((brand) => socialData?.brands?.[brand]?.sentiment?.[key] || 0),
+              backgroundColor: chartColors[key],
+              borderWidth: 0,
+            })),
+          },
+          options: baseChartOptions({
+            indexAxis: "x",
+            scales: {
+              x: { stacked: true, ticks: { color: chartColors.neutral, font: { weight: 800 } }, grid: { display: false } },
+              y: { stacked: true, beginAtZero: true, ticks: { color: chartColors.neutral, font: { weight: 700 } }, grid: { color: "oklch(83% 0.026 238 / 0.55)" } },
+            },
+          }),
+        });
+      }
+
+      function opportunityValues(brandData) {
+        const types = brandData?.mention_types || {};
+        const clusters = brandData?.product_clusters || {};
+        const values = [
+          (types["추천 요청"] || 0) + (types["구매 전 질문"] || 0),
+          clusters["안마의자"] || 0,
+          (clusters["발마사지기"] || 0) + (clusters["종아리 마사지기"] || 0),
+          clusters["부모님 선물"] || 0,
+          (clusters["가격/가성비"] || 0) + (types["구매 후기"] || 0),
+          (types["AS/고장 불만"] || 0) + (clusters["AS/고장/내구성"] || 0),
+          types["바이럴/광고 의심"] || 0,
+        ];
+        return normalizeSeries(values);
+      }
+
+      function buildRadarChart(socialData) {
+        createChart("opportunity-radar", {
+          type: "radar",
+          data: {
+            labels: ["추천/구매질문", "안마의자", "발·종아리", "부모님 선물", "가성비/후기", "AS 리스크", "광고 의심"],
+            datasets: brandOrder.map((brand) => ({
+              label: brandKorean[brand],
+              data: opportunityValues(socialData?.brands?.[brand]),
+              backgroundColor: brand === "Zespa" ? "oklch(56% 0.16 25 / 0.2)" : "oklch(54% 0.12 210 / 0.2)",
+              borderColor: chartColors[brand],
+              pointBackgroundColor: chartColors[brand],
+              pointRadius: 3,
+              borderWidth: 2,
+            })),
+          },
+          options: baseChartOptions({
+            scales: {
+              r: {
+                min: 0,
+                max: 100,
+                ticks: { display: false, stepSize: 25 },
+                pointLabels: { color: chartColors.neutral, font: { size: 12, weight: 800 } },
+                grid: { color: "oklch(83% 0.026 238 / 0.62)" },
+                angleLines: { color: "oklch(83% 0.026 238 / 0.62)" },
+              },
+            },
+          }),
+        });
+      }
+
+      function buildClusterChart(socialData) {
+        const entries = topEntries(socialData?.product_clusters, 8).filter(([label]) => label !== "기타");
+        createChart("cluster-chart", {
+          type: "bar",
+          data: {
+            labels: entries.map(([label]) => label),
+            datasets: [
+              {
+                label: "언급수",
+                data: entries.map(([, count]) => count),
+                backgroundColor: entries.map((_, index) => (index % 2 ? "oklch(54% 0.12 210 / 0.78)" : "oklch(56% 0.16 25 / 0.78)")),
+                borderColor: entries.map((_, index) => (index % 2 ? chartColors.Bodyfriend : chartColors.Zespa)),
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: baseChartOptions({
+            indexAxis: "y",
+            plugins: { ...baseChartOptions().plugins, legend: { display: false } },
+            scales: {
+              x: { beginAtZero: true, ticks: { color: chartColors.neutral, font: { weight: 700 } }, grid: { color: "oklch(83% 0.026 238 / 0.55)" } },
+              y: { ticks: { color: chartColors.neutral, font: { weight: 800 } }, grid: { display: false } },
+            },
+          }),
+        });
+      }
+
+      function renderScoreboard(productData, socialData) {
+        const container = document.getElementById("scoreboard");
+        const zespa = productData?.brands?.Zespa || {};
+        const body = productData?.brands?.Bodyfriend || {};
+        const zespaSocial = socialData?.brands?.Zespa || {};
+        const bodySocial = socialData?.brands?.Bodyfriend || {};
+        const category = socialData?.brands?.Category || {};
+        const stats = [
+          ["상품 노출 우위", `${(zespa.product_count || 0) - (body.product_count || 0) >= 0 ? "제스파" : "바디프랜드"}`, `${formatNumber(zespa.product_count || 0)} vs ${formatNumber(body.product_count || 0)}개`],
+          ["소셜 언급 우위", `${(zespaSocial.mention_count || 0) - (bodySocial.mention_count || 0) >= 0 ? "제스파" : "바디프랜드"}`, `${formatNumber(zespaSocial.mention_count || 0)} vs ${formatNumber(bodySocial.mention_count || 0)}건`],
+          ["평균가 격차", `${shortPrice(body.avg_price)}`, `바디프랜드 평균 · 제스파 ${shortPrice(zespa.avg_price)}`],
+          ["카테고리 수요", formatNumber(category.mention_count || 0), "브랜드 밖 추천/선물/안마의자 탐색"],
+        ];
+        container.innerHTML = stats
+          .map(([label, value, note]) => `<div class="stat"><span class="label">${label}</span><span class="stat-value">${value}</span><span class="stat-note">${note}</span></div>`)
+          .join("");
+      }
+
+      function renderNetworkMap(socialData) {
+        const svg = document.getElementById("network-map");
+        if (!svg) return;
+        const platforms = topEntries(socialData?.platforms, 5);
+        const clusters = topEntries(socialData?.product_clusters, 6).filter(([label]) => label !== "기타").slice(0, 5);
+        const types = topEntries(socialData?.mention_types, 5).filter(([label]) => label !== "기타").slice(0, 4);
+        const width = 1100;
+        const height = 440;
+        svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+        svg.innerHTML = "";
+
+        const nodes = [
+          { id: "zespa", label: "제스파", count: socialData?.brands?.Zespa?.mention_count || 0, x: 170, y: 145, r: 42, color: chartColors.Zespa },
+          { id: "body", label: "바디프랜드", count: socialData?.brands?.Bodyfriend?.mention_count || 0, x: 170, y: 300, r: 38, color: chartColors.Bodyfriend },
+          { id: "category", label: "카테고리 수요", count: socialData?.brands?.Category?.mention_count || 0, x: 535, y: 220, r: 48, color: chartColors.Category },
+          ...platforms.map(([label, count], index) => ({ id: `platform-${label}`, label, count, x: 405 + index * 105, y: 68, r: 20 + Math.min(count, 80) / 8, color: "oklch(62% 0.045 245)" })),
+          ...clusters.map(([label, count], index) => ({ id: `cluster-${label}`, label, count, x: 770 + (index % 2) * 155, y: 150 + Math.floor(index / 2) * 88, r: 22 + Math.min(count, 60) / 7, color: index % 2 ? chartColors.Bodyfriend : chartColors.Zespa })),
+          ...types.map(([label, count], index) => ({ id: `type-${label}`, label, count, x: 365 + index * 145, y: 382, r: 18 + Math.min(count, 80) / 8, color: label.includes("AS") ? chartColors.negative : label.includes("추천") ? chartColors.Category : chartColors.mixed })),
+        ];
+
+        const byId = Object.fromEntries(nodes.map((node) => [node.id, node]));
+        const edgeSpecs = [
+          ["zespa", "category", socialData?.brands?.Zespa?.mention_count || 1],
+          ["body", "category", socialData?.brands?.Bodyfriend?.mention_count || 1],
+          ...platforms.map(([label, count]) => [`platform-${label}`, "category", count]),
+          ...clusters.map(([label, count]) => ["category", `cluster-${label}`, count]),
+          ...types.map(([label, count]) => ["category", `type-${label}`, count]),
+          ["zespa", "type-AS/고장 불만", socialData?.brands?.Zespa?.mention_types?.["AS/고장 불만"] || 0],
+          ["body", "type-AS/고장 불만", socialData?.brands?.Bodyfriend?.mention_types?.["AS/고장 불만"] || 0],
+        ].filter(([from, to, count]) => byId[from] && byId[to] && count > 0);
+
+        const maxEdge = Math.max(...edgeSpecs.map(([, , count]) => count), 1);
+        const edgeGroup = document.createElementNS("http://www.w3.org/2000/svg", "g");
+        edgeSpecs.forEach(([from, to, count]) => {
+          const a = byId[from];
+          const b = byId[to];
+          const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+          line.setAttribute("x1", a.x);
+          line.setAttribute("y1", a.y);
+          line.setAttribute("x2", b.x);
+          line.setAttribute("y2", b.y);
+          line.setAttribute("class", "network-edge");
+          line.setAttribute("stroke-width", String(1 + (count / maxEdge) * 8));
+          line.setAttribute("opacity", String(0.28 + (count / maxEdge) * 0.42));
+          edgeGroup.appendChild(line);
+        });
+        svg.appendChild(edgeGroup);
+
+        const nodeGroup = document.createElementNS("http://www.w3.org/2000/svg", "g");
+        nodes.forEach((node) => {
+          const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+          circle.setAttribute("cx", node.x);
+          circle.setAttribute("cy", node.y);
+          circle.setAttribute("r", node.r);
+          circle.setAttribute("fill", node.color);
+          circle.setAttribute("class", "network-node");
+          nodeGroup.appendChild(circle);
+
+          const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+          label.setAttribute("x", node.x);
+          label.setAttribute("y", node.y + node.r + 20);
+          label.setAttribute("text-anchor", "middle");
+          label.setAttribute("class", "node-label");
+          label.textContent = node.label;
+          nodeGroup.appendChild(label);
+
+          const count = document.createElementNS("http://www.w3.org/2000/svg", "text");
+          count.setAttribute("x", node.x);
+          count.setAttribute("y", node.y + 4);
+          count.setAttribute("text-anchor", "middle");
+          count.setAttribute("class", "node-count");
+          count.textContent = formatNumber(node.count);
+          nodeGroup.appendChild(count);
+        });
+        svg.appendChild(nodeGroup);
+      }
+
+      function renderCharts(productData, socialData) {
+        renderScoreboard(productData, socialData);
+        buildScaleChart(productData, socialData);
+        buildSentimentChart(socialData);
+        buildRadarChart(socialData);
+        buildClusterChart(socialData);
+        renderNetworkMap(socialData);
+      }
+
       function renderBrands(brands) {
         const container = document.getElementById("brands");
         container.innerHTML = "";
         Object.entries(brands || {}).forEach(([brand, item]) => {
           const card = document.createElement("article");
           card.className = "brand-card";
+          card.dataset.brand = brand;
           const topProducts = (item.top_products || [])
+            .slice(0, 8)
             .map((product) => {
-              const title = product.title || "Untitled product";
-              const url = product.url || "#";
-              const meta = `${product.source || ""} · 리뷰 ${formatNumber(product.review_count)} · ${product.rating || "n/a"}점`;
+              const title = escapeHtml(product.title || "Untitled product");
+              const url = escapeHtml(product.url || "#");
+              const meta = `${escapeHtml(product.source || "")} · 리뷰 ${formatNumber(product.review_count)} · ${escapeHtml(product.rating || "n/a")}점`;
               return `<div class="product-row"><a class="product-title" href="${url}" target="_blank" rel="noreferrer">${title}</a><span class="product-meta">${meta}</span></div>`;
             })
             .join("");
           card.innerHTML = `
             <div class="brand-top">
-              <h3 class="brand-name">${brand}</h3>
+              <h3 class="brand-name">${escapeHtml(brandKorean[brand] || brand)}</h3>
               <div class="brand-badge">${item.product_count || 0} rows</div>
             </div>
             <div class="metrics">
-              <div class="metric"><span class="label">Avg rating</span><span class="metric-value">${item.avg_rating ?? "n/a"}</span></div>
-              <div class="metric"><span class="label">Reviews</span><span class="metric-value">${formatNumber(item.total_review_count)}</span></div>
-              <div class="metric"><span class="label">Avg price</span><span class="metric-value">${formatNumber(item.avg_price)}</span></div>
-              <div class="metric"><span class="label">Top products</span><span class="metric-value">${(item.top_products || []).length}</span></div>
+              <div class="metric"><span class="label">평균 평점</span><span class="metric-value">${item.avg_rating ?? "n/a"}</span></div>
+              <div class="metric"><span class="label">리뷰수</span><span class="metric-value">${formatNumber(item.total_review_count)}</span></div>
+              <div class="metric"><span class="label">평균가</span><span class="metric-value">${shortPrice(item.avg_price)}</span></div>
+              <div class="metric"><span class="label">상위 상품</span><span class="metric-value">${(item.top_products || []).length}</span></div>
             </div>
-            <div class="product-list">${topProducts || '<span class="label">No product rows</span>'}</div>
+            <div class="product-list">${topProducts || '<span class="label">상품 행 없음</span>'}</div>
           `;
           container.appendChild(card);
         });
@@ -538,22 +1063,22 @@
         Object.entries(channels || {}).forEach(([source, item]) => {
           const row = document.createElement("div");
           row.className = "source-row";
-          row.innerHTML = `<span class="source-name">${source}</span><span class="value">${item.product_count || 0} rows · ${formatNumber(item.total_review_count)} reviews</span>`;
+          row.innerHTML = `<span class="source-name">${escapeHtml(source)}</span><span class="value">${item.product_count || 0} rows · ${formatNumber(item.total_review_count)} reviews</span>`;
           container.appendChild(row);
         });
-        if (!container.children.length) container.innerHTML = '<span class="label">No channel rows yet</span>';
+        if (!container.children.length) container.innerHTML = '<span class="label">채널 행 없음</span>';
       }
 
       function renderKeywords(keywords) {
         const container = document.getElementById("keywords");
         container.innerHTML = "";
-        Object.entries(keywords || {}).forEach(([keyword, count]) => {
+        topEntries(keywords, 24).forEach(([keyword, count]) => {
           const chip = document.createElement("span");
           chip.className = "chip";
           chip.textContent = `${keyword} ${count}`;
           container.appendChild(chip);
         });
-        if (!container.children.length) container.innerHTML = '<span class="label">No keywords detected</span>';
+        if (!container.children.length) container.innerHTML = '<span class="label">키워드 없음</span>';
       }
 
       function renderStatus(status) {
@@ -564,16 +1089,16 @@
           const tr = document.createElement("tr");
           const state = item.blocked ? "blocked" : item.rows_found > 0 ? "ok" : "empty";
           tr.innerHTML = `
-            <td>${item.source || ""}</td>
-            <td>${item.query || ""}</td>
+            <td>${escapeHtml(item.source || "")}</td>
+            <td>${escapeHtml(item.query || "")}</td>
             <td class="${state === "blocked" ? "blocked" : state === "ok" ? "ok" : ""}">${state}</td>
             <td>${item.rows_found ?? 0}</td>
-            <td>${item.error || ""}</td>
+            <td>${escapeHtml(item.error || "")}</td>
           `;
           container.appendChild(tr);
         });
         if (!container.children.length) {
-          container.innerHTML = '<tr><td colspan="5">No source attempts recorded.</td></tr>';
+          container.innerHTML = '<tr><td colspan="5">수집 상태 기록이 없습니다.</td></tr>';
         }
       }
 
@@ -583,6 +1108,7 @@
         Object.entries(brands || {}).forEach(([brand, item]) => {
           const card = document.createElement("article");
           card.className = "brand-card";
+          card.dataset.brand = brand;
           const sentiment = Object.entries(item.sentiment || {})
             .map(([label, count]) => `${label} ${count}`)
             .join(" · ");
@@ -592,60 +1118,60 @@
             .join(" · ");
           card.innerHTML = `
             <div class="brand-top">
-              <h3 class="brand-name">${brand}</h3>
+              <h3 class="brand-name">${escapeHtml(brandKorean[brand] || brand)}</h3>
               <div class="brand-badge">${item.mention_count || 0} mentions</div>
             </div>
             <div class="metrics">
-              <div class="metric"><span class="label">Positive</span><span class="metric-value">${(item.sentiment || {}).positive || 0}</span></div>
-              <div class="metric"><span class="label">Negative</span><span class="metric-value">${(item.sentiment || {}).negative || 0}</span></div>
-              <div class="metric"><span class="label">Mixed</span><span class="metric-value">${(item.sentiment || {}).mixed || 0}</span></div>
-              <div class="metric"><span class="label">Neutral</span><span class="metric-value">${(item.sentiment || {}).neutral || 0}</span></div>
+              <div class="metric"><span class="label">긍정</span><span class="metric-value">${(item.sentiment || {}).positive || 0}</span></div>
+              <div class="metric"><span class="label">부정</span><span class="metric-value">${(item.sentiment || {}).negative || 0}</span></div>
+              <div class="metric"><span class="label">혼합</span><span class="metric-value">${(item.sentiment || {}).mixed || 0}</span></div>
+              <div class="metric"><span class="label">중립</span><span class="metric-value">${(item.sentiment || {}).neutral || 0}</span></div>
             </div>
             <div class="product-list">
-              <div class="product-row"><span class="label">Sentiment</span><span class="product-meta">${sentiment || "n/a"}</span></div>
-              <div class="product-row"><span class="label">Top reasons</span><span class="product-meta">${types || "n/a"}</span></div>
+              <div class="product-row"><span class="label">감성</span><span class="product-meta">${escapeHtml(sentiment || "n/a")}</span></div>
+              <div class="product-row"><span class="label">상위 이유</span><span class="product-meta">${escapeHtml(types || "n/a")}</span></div>
             </div>
           `;
           container.appendChild(card);
         });
-        if (!container.children.length) container.innerHTML = '<div class="panel"><span class="label">No social rows yet</span></div>';
+        if (!container.children.length) container.innerHTML = '<div class="panel"><span class="label">소셜 행 없음</span></div>';
       }
 
       function renderCountChips(id, data) {
         const container = document.getElementById(id);
         container.innerHTML = "";
-        Object.entries(data || {}).forEach(([label, count]) => {
+        topEntries(data, 24).forEach(([label, count]) => {
           const chip = document.createElement("span");
           chip.className = "chip";
           chip.textContent = `${label} ${count}`;
           container.appendChild(chip);
         });
-        if (!container.children.length) container.innerHTML = '<span class="label">No rows yet</span>';
+        if (!container.children.length) container.innerHTML = '<span class="label">행 없음</span>';
       }
 
       function renderSocialPlatforms(platforms) {
         const container = document.getElementById("social-platforms");
         container.innerHTML = "";
-        Object.entries(platforms || {}).forEach(([platform, count]) => {
+        topEntries(platforms, 20).forEach(([platform, count]) => {
           const row = document.createElement("div");
           row.className = "source-row";
-          row.innerHTML = `<span class="source-name">${platform}</span><span class="value">${count} mentions</span>`;
+          row.innerHTML = `<span class="source-name">${escapeHtml(platform)}</span><span class="value">${count} mentions</span>`;
           container.appendChild(row);
         });
-        if (!container.children.length) container.innerHTML = '<span class="label">No platform rows yet</span>';
+        if (!container.children.length) container.innerHTML = '<span class="label">플랫폼 행 없음</span>';
       }
 
       function renderFreshSignals(rows) {
         const container = document.getElementById("fresh-signals");
         container.innerHTML = "";
-        (rows || []).forEach((item) => {
+        (rows || []).slice(0, 10).forEach((item) => {
           const row = document.createElement("div");
           row.className = "mention-row";
-          const meta = `${item.platform || ""} · ${item.brand || ""} · ${item.sentiment || "unknown"} · ${item.mention_type || "기타"}`;
-          row.innerHTML = `<a class="mention-title" href="${item.url || "#"}" target="_blank" rel="noreferrer">${item.title || "Untitled mention"}</a><span class="mention-meta">${meta}</span>`;
+          const meta = `${item.platform || ""} · ${brandKorean[item.brand] || item.brand || ""} · ${item.sentiment || "unknown"} · ${item.mention_type || "기타"}`;
+          row.innerHTML = `<a class="mention-title" href="${escapeHtml(item.url || "#")}" target="_blank" rel="noreferrer">${escapeHtml(item.title || "Untitled mention")}</a><span class="mention-meta">${escapeHtml(meta)}</span>`;
           container.appendChild(row);
         });
-        if (!container.children.length) container.innerHTML = '<span class="label">No priority signals yet</span>';
+        if (!container.children.length) container.innerHTML = '<span class="label">우선 신호 없음</span>';
       }
 
       function renderSocialStatus(status) {
@@ -656,37 +1182,36 @@
           const tr = document.createElement("tr");
           const state = item.blocked ? "blocked" : item.rows_found > 0 ? "ok" : "empty";
           tr.innerHTML = `
-            <td>${item.source || ""}</td>
-            <td>${item.query || ""}</td>
+            <td>${escapeHtml(item.source || "")}</td>
+            <td>${escapeHtml(item.query || "")}</td>
             <td class="${state === "blocked" ? "blocked" : state === "ok" ? "ok" : ""}">${state}</td>
             <td>${item.rows_found ?? 0}</td>
-            <td>${item.error || ""}</td>
+            <td>${escapeHtml(item.error || "")}</td>
           `;
           container.appendChild(tr);
         });
         if (!container.children.length) {
-          container.innerHTML = '<tr><td colspan="5">No social source attempts recorded.</td></tr>';
+          container.innerHTML = '<tr><td colspan="5">소셜 수집 상태 기록이 없습니다.</td></tr>';
         }
       }
 
-      loadLatest().then((latest) => {
+      async function initDashboard() {
+        const [latest, socialLatest] = await Promise.all([loadLatest(), loadSocialLatest()]);
         if (!latest) {
           document.getElementById("updated").textContent = "No data";
           document.getElementById("notice").style.display = "block";
-          return;
+        } else {
+          document.getElementById("updated").textContent = latest.updated_at_kst || "n/a";
+          document.getElementById("row-count").textContent = formatNumber(latest.row_count);
+          document.getElementById("history-count").textContent = formatNumber(latest.historical_row_count);
+          if (!latest.row_count) document.getElementById("notice").style.display = "block";
+          renderBrands(latest.brands);
+          renderChannels(latest.channels);
+          renderKeywords(latest.keywords);
+          renderStatus(latest.source_status);
         }
-        document.getElementById("updated").textContent = latest.updated_at_kst || "n/a";
-        document.getElementById("row-count").textContent = formatNumber(latest.row_count);
-        document.getElementById("history-count").textContent = formatNumber(latest.historical_row_count);
-        if (!latest.row_count) document.getElementById("notice").style.display = "block";
-        renderBrands(latest.brands);
-        renderChannels(latest.channels);
-        renderKeywords(latest.keywords);
-        renderStatus(latest.source_status);
-      });
 
-      loadSocialLatest().then((latest) => {
-        if (!latest) {
+        if (!socialLatest) {
           document.getElementById("social-row-count").textContent = "No data";
           renderSocialBrands({});
           renderSocialPlatforms({});
@@ -695,17 +1220,21 @@
           renderCountChips("social-clusters", {});
           renderFreshSignals([]);
           renderSocialStatus(null);
-          return;
+        } else {
+          document.getElementById("social-row-count").textContent = formatNumber(socialLatest.row_count);
+          renderSocialBrands(socialLatest.brands);
+          renderSocialPlatforms(socialLatest.platforms);
+          renderCountChips("social-types", socialLatest.mention_types);
+          renderCountChips("social-sentiment", socialLatest.sentiment);
+          renderCountChips("social-clusters", socialLatest.product_clusters);
+          renderFreshSignals(socialLatest.fresh_signals);
+          renderSocialStatus(socialLatest.source_status);
         }
-        document.getElementById("social-row-count").textContent = formatNumber(latest.row_count);
-        renderSocialBrands(latest.brands);
-        renderSocialPlatforms(latest.platforms);
-        renderCountChips("social-types", latest.mention_types);
-        renderCountChips("social-sentiment", latest.sentiment);
-        renderCountChips("social-clusters", latest.product_clusters);
-        renderFreshSignals(latest.fresh_signals);
-        renderSocialStatus(latest.source_status);
-      });
+
+        renderCharts(latest || {}, socialLatest || {});
+      }
+
+      initDashboard();
     </script>
   </body>
 </html>
