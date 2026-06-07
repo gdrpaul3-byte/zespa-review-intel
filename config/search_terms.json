@@ -19,6 +19,10 @@
     ]
   },
   "sources": {
+    "danawa": {
+      "enabled": true,
+      "base_url": "https://search.danawa.com/dsearch.php"
+    },
     "naver_shopping": {
       "enabled": true,
       "base_url": "https://search.shopping.naver.com/search/all"

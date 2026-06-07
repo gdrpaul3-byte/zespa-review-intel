@@ -153,6 +153,13 @@ def coupang_url(base_url: str, query: str, page: int) -> str:
     return f"{base_url}?{urlencode({'q': query, 'channel': 'user', 'page': page})}"
 
 
+def danawa_url(base_url: str, query: str, page: int) -> str:
+    params = {'query': query}
+    if page > 1:
+        params['page'] = page
+    return f"{base_url}?{urlencode(params)}"
+
+
 def parse_json_ld(soup: BeautifulSoup) -> list[dict[str, str]]:
     rows: list[dict[str, str]] = []
     for script in soup.find_all("script", type="application/ld+json"):
@@ -249,7 +256,61 @@ def parse_coupang(html: str, max_items: int) -> list[dict[str, str]]:
     return parsed
 
 
+
+def parse_danawa(html: str, max_items: int) -> list[dict[str, str]]:
+    soup = BeautifulSoup(html, "lxml")
+    parsed: list[dict[str, str]] = []
+    seen_urls: set[str] = set()
+    cards = soup.select("li.prod_item, div.prod_main_info")
+    for card in cards:
+        title_el = card.select_one(".prod_name a, p.prod_name a, a[name='productName'], a[href*='prod.danawa.com/info']")
+        title = clean_text(title_el.get_text(" ", strip=True) if title_el else "")
+        if not title or len(title) < 2:
+            continue
+
+        href = title_el.get("href", "") if title_el else ""
+        if href and href in seen_urls:
+            continue
+        if href:
+            seen_urls.add(href)
+
+        text = clean_text(card.get_text(" ", strip=True))
+        price_el = card.select_one(".price_sect strong, .prod_pricelist .price, .low_price .num, [class*=price] strong")
+        price = price_text(price_el.get_text(" ", strip=True) if price_el else text)
+
+        rating = ""
+        rating_match = re.search(r"별점\s*([0-5](?:\.\d+)?)", text)
+        if rating_match:
+            rating = rating_match.group(1)
+        else:
+            rating_el = card.select_one(".point_num, .star_mask, [class*=star]")
+            rating = rating_text(rating_el.get_text(" ", strip=True) if rating_el else "")
+
+        review_count = ""
+        review_match = re.search(r"리뷰수\s*\(?\s*([\d,]+)\s*\)?", text)
+        if review_match:
+            review_count = digits(review_match.group(1))
+        else:
+            review_el = card.find(string=re.compile(r"리뷰수|상품리뷰"))
+            review_count = digits(str(review_el) if review_el else "")
+
+        parsed.append(
+            {
+                "title": title,
+                "url": href,
+                "price": price,
+                "rating": rating,
+                "review_count": review_count,
+            }
+        )
+        if len(parsed) >= max_items:
+            break
+    return parsed
+
+
 def build_url(source: str, base_url: str, query: str, page: int) -> str:
+    if source == "danawa":
+        return danawa_url(base_url, query, page)
     if source == "naver_shopping":
         return naver_url(base_url, query, page)
     if source == "coupang":
@@ -258,6 +319,8 @@ def build_url(source: str, base_url: str, query: str, page: int) -> str:
 
 
 def parse_source(source: str, html: str, max_items: int) -> list[dict[str, str]]:
+    if source == "danawa":
+        return parse_danawa(html, max_items)
     if source == "naver_shopping":
         return parse_naver(html, max_items)
     if source == "coupang":
