@@ -1,35 +1,33 @@
 # Zespa vs Bodyfriend latest report
 
-- Updated at KST: 2026-06-18T09:01:58+09:00
-- Rows in latest run: 85
-- Historical rows: 893
+- Updated at KST: 2026-06-19T09:01:52+09:00
+- Rows in latest run: 65
+- Historical rows: 958
 
 ## Brand summary
 
 ### Bodyfriend
-- Product rows: 60
+- Product rows: 40
 - Average rating: n/a
 - Total review count: 0
-- Average price: 2362329
+- Average price: 2601405
 
 ### Zespa
 - Product rows: 25
 - Average rating: n/a
 - Total review count: 0
-- Average price: 262532
+- Average price: 259998
 
 ## Channel coverage
-- danawa: 85 rows, 0 reviews
+- danawa: 65 rows, 0 reviews
 
 ## Keyword counts
-- AS: 56
-- 안마의자: 47
-- 팔콘: 41
-- 종아리: 13
-- 발: 10
-- 온열: 9
-- 무선: 9
+- AS: 46
+- 팔콘: 38
+- 안마의자: 34
+- 무선: 8
+- 종아리: 7
+- 온열: 4
 - 배송: 4
-- 공기압: 2
-- 목: 2
-- 어깨: 1
+- 발: 2
+- 프리미엄: 1

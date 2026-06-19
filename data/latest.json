@@ -1,108 +1,108 @@
 {
-  "updated_at_kst": "2026-06-18T09:01:58+09:00",
-  "row_count": 85,
-  "historical_row_count": 893,
+  "updated_at_kst": "2026-06-19T09:01:52+09:00",
+  "row_count": 65,
+  "historical_row_count": 958,
   "scope": "latest_run",
   "brands": {
     "Bodyfriend": {
-      "product_count": 60,
+      "product_count": 40,
       "avg_rating": null,
       "total_review_count": 0,
-      "avg_price": 2362329,
+      "avg_price": 2601405,
       "top_products": [
         {
-          "collected_at_kst": "2026-06-18T09:00:32+09:00",
+          "collected_at_kst": "2026-06-19T09:00:28+09:00",
           "source": "danawa",
           "brand": "Bodyfriend",
-          "query": "바디프렌드 마사지기",
+          "query": "바디프렌드 팔콘",
           "rank": "1",
-          "title": "[중고] 바디 프랜드 미니 두피올케어 RED LED 앤 듀얼파장 괄사 마사지기 + BTN 두피올케어 앰플 세트 핑크( 마사지기 ) 마사지기 (ERB-1000)",
-          "url": "https://prod.danawa.com/bridge/go_link_goods.php?cate_c1=72&cate_c2=59669&cate_c3=59683&cate_c4=0&cmpny_c=TP40F&link_prod_c=U94516141378&keyword=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%EB%A7%88%EC%82%AC%EC%A7%80%EA%B8%B0&r=17817408628231&cate=10348572",
-          "price": "",
+          "title": "ShenzhenKinWujieTechnologyCo.,LTD 바디 프랜드 팔콘 N 태블릿 PC5%쿠폰+구매 후 3천원 적립",
+          "url": "https://prod.danawa.com/bridge/go_link_goods.php?cate_c1=22591&cate_c2=223540&cate_c3=223639&cate_c4=0&cmpny_c=ED904&link_prod_c=35969488&keyword=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%ED%8C%94%EC%BD%98&r=17818272658560&cate=19238830",
+          "price": "350000",
           "rating": "",
           "review_count": ""
         },
         {
-          "collected_at_kst": "2026-06-18T09:00:32+09:00",
+          "collected_at_kst": "2026-06-19T09:00:28+09:00",
           "source": "danawa",
           "brand": "Bodyfriend",
-          "query": "바디프렌드 마사지기",
+          "query": "바디프렌드 팔콘",
           "rank": "2",
-          "title": "천갈이 안마의자 바디 프랜드 발커버 범용 보호커버 안마기 교체 마사지 가죽교체",
-          "url": "https://prod.danawa.com/bridge/go_link_goods.php?cate_c1=10840&cate_c2=223834&cate_c3=223903&cate_c4=224155&cmpny_c=TH201&link_prod_c=9433502200&keyword=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%EB%A7%88%EC%82%AC%EC%A7%80%EA%B8%B0&r=17817408623072&cate=17236129",
-          "price": "57570",
+          "title": "Zhejiang Haozhonghao Health Product Co 바디 프랜드 [공식인증리퍼] 바디 프랜드 팔콘 N(샴페인베이지) 안마의자 헬스케어로봇 무상AS 1년 (태블릿 미제공)",
+          "url": "https://prod.danawa.com/bridge/go_link_goods.php?cate_c1=10840&cate_c2=223834&cate_c3=223894&cate_c4=224143&cmpny_c=ED903&link_prod_c=3346385076&keyword=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%ED%8C%94%EC%BD%98&r=17818272659957&cate=17326921",
+          "price": "3250000",
           "rating": "",
           "review_count": ""
         },
         {
-          "collected_at_kst": "2026-06-18T09:00:32+09:00",
+          "collected_at_kst": "2026-06-19T09:00:28+09:00",
           "source": "danawa",
           "brand": "Bodyfriend",
-          "query": "바디프렌드 마사지기",
+          "query": "바디프렌드 팔콘",
           "rank": "3",
-          "title": "제조자 :Shanghai Rongtai Health Technology Corporation Limited / / 제조의뢰자 : (주) 바디 프랜드 [10%카드할인] 바디 프랜드 뉴팔콘 카릭스로봇 안마의자 인기모델 외 새제품&공식리퍼 모음/ 특별사은품",
-          "url": "https://prod.danawa.com/bridge/go_link_goods.php?cate_c1=10840&cate_c2=223834&cate_c3=223894&cate_c4=224143&cmpny_c=TH201&link_prod_c=7306297925&prod_id=96257309&linkYN=Y&fee_type=T&safe_trade=&keyword=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%EB%A7%88%EC%82%AC%EC%A7%80%EA%B8%B0&r=17817408629769&cate=17326921",
-          "price": "1720000",
+          "title": "㈜ 바디 프랜드 [적립금10만/무12] 바디 프랜드 뉴 팔콘 다이아데님 헬스케어로봇 무상AS 5년",
+          "url": "https://prod.danawa.com/bridge/go_link_goods.php?cate_c1=10840&cate_c2=223834&cate_c3=0&cate_c4=0&cmpny_c=ED908&link_prod_c=1125919217&keyword=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%ED%8C%94%EC%BD%98&r=17818272652572",
+          "price": "3300000",
           "rating": "",
           "review_count": ""
         },
         {
-          "collected_at_kst": "2026-06-18T09:00:32+09:00",
+          "collected_at_kst": "2026-06-19T09:00:28+09:00",
           "source": "danawa",
           "brand": "Bodyfriend",
-          "query": "바디프렌드 마사지기",
+          "query": "바디프렌드 팔콘",
           "rank": "4",
-          "title": "바디 프랜드 파밀레C 마사지소파 무상AS 3년",
-          "url": "https://prod.danawa.com/bridge/go_link_goods.php?cate_c1=10840&cate_c2=223834&cate_c3=223894&cate_c4=224146&cmpny_c=TU710C&link_prod_c=3289232-24474528&prod_id=74340905&linkYN=Y&fee_type=T&safe_trade=&keyword=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%EB%A7%88%EC%82%AC%EC%A7%80%EA%B8%B0&r=17817408625609&cate=17346856",
-          "price": "1590000",
+          "title": "(주) 바디 프랜드 [중고] [공식인증리퍼] 바디 프랜드 팔콘 S 헬스케어로봇 안마의자 무상AS 1년",
+          "url": "https://prod.danawa.com/bridge/go_link_goods.php?cate_c1=10840&cate_c2=223834&cate_c3=223894&cate_c4=0&cmpny_c=ED907&link_prod_c=2208075433&keyword=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%ED%8C%94%EC%BD%98&r=17818272654395&cate=17225872",
+          "price": "2005000",
           "rating": "",
           "review_count": ""
         },
         {
-          "collected_at_kst": "2026-06-18T09:00:32+09:00",
+          "collected_at_kst": "2026-06-19T09:00:28+09:00",
           "source": "danawa",
           "brand": "Bodyfriend",
-          "query": "바디프렌드 마사지기",
+          "query": "바디프렌드 팔콘",
           "rank": "5",
-          "title": "바디 프랜드 의료기기 메디컬파라오 2026 무상AS 5년",
-          "url": "https://prod.danawa.com/bridge/go_link_goods.php?cate_c1=10840&cate_c2=223834&cate_c3=223894&cate_c4=224143&cmpny_c=TU710C&link_prod_c=3609712-27122442&prod_id=68290748&linkYN=Y&fee_type=T&safe_trade=&keyword=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%EB%A7%88%EC%82%AC%EC%A7%80%EA%B8%B0&r=17817408629853&cate=17326921",
-          "price": "6700000",
+          "title": "Shanghai Rongtai Health Technology Corporation Limited 바디 프랜드 공식인증리퍼 팔콘 SV 천연가죽 안마의자 무상AS 1년",
+          "url": "https://prod.danawa.com/bridge/go_link_goods.php?cate_c1=10840&cate_c2=223834&cate_c3=223894&cate_c4=0&cmpny_c=TJ418&link_prod_c=0056353525&keyword=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%ED%8C%94%EC%BD%98&r=17818272654506&cate=17225872",
+          "price": "2350000",
           "rating": "",
           "review_count": ""
         },
         {
-          "collected_at_kst": "2026-06-18T09:00:32+09:00",
+          "collected_at_kst": "2026-06-19T09:00:28+09:00",
           "source": "danawa",
           "brand": "Bodyfriend",
-          "query": "바디프렌드 마사지기",
+          "query": "바디프렌드 팔콘",
           "rank": "6",
-          "title": "[해외] 안마의자 커버 풀 마사지기 시트 바디 프랜드 코지마 파리의 사랑 싱글 시트 1개",
-          "url": "https://prod.danawa.com/bridge/go_link_goods.php?cate_c1=57906&cate_c2=59496&cate_c3=220061&cate_c4=220082&cmpny_c=TP40F&link_prod_c=I28538003703&keyword=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%EB%A7%88%EC%82%AC%EC%A7%80%EA%B8%B0&r=17817408623239&cate=14243253",
-          "price": "55700",
+          "title": "바디 프랜드(bodyfriend) [중고] [공식인증 리퍼] 팔콘 S(천연가죽) 안마의자 헬스케어로봇 무상AS 1년",
+          "url": "https://prod.danawa.com/bridge/go_link_goods.php?cate_c1=10840&cate_c2=223834&cate_c3=223894&cate_c4=0&cmpny_c=ED909&link_prod_c=2027211010&keyword=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%ED%8C%94%EC%BD%98&r=17818272655020&cate=17225872",
+          "price": "2240000",
           "rating": "",
           "review_count": ""
         },
         {
-          "collected_at_kst": "2026-06-18T09:00:32+09:00",
+          "collected_at_kst": "2026-06-19T09:00:28+09:00",
           "source": "danawa",
           "brand": "Bodyfriend",
-          "query": "바디프렌드 마사지기",
+          "query": "바디프렌드 팔콘",
           "rank": "7",
-          "title": "[해외] 안마의자 커버 풀 마사지기 시트 바디 프랜드 코지마 시그니처 대형 더블 시트 1개",
-          "url": "https://prod.danawa.com/bridge/go_link_goods.php?cate_c1=57906&cate_c2=59496&cate_c3=220061&cate_c4=220082&cmpny_c=TP40F&link_prod_c=I28538003731&keyword=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%EB%A7%88%EC%82%AC%EC%A7%80%EA%B8%B0&r=17817408626539&cate=14243253",
-          "price": "55700",
+          "title": "바디 프랜드 바디 프랜드 (현대Hmall)클릭혜택가 305만 바디 프랜드 뉴 팔콘 헬스케어로봇 안마의자 무상AS 5년",
+          "url": "https://prod.danawa.com/bridge/go_link_goods.php?cate_c1=10840&cate_c2=223834&cate_c3=223894&cate_c4=0&cmpny_c=EE128&link_prod_c=4620656057&keyword=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%ED%8C%94%EC%BD%98&r=17818272653569&cate=17225872",
+          "price": "3191100",
           "rating": "",
           "review_count": ""
         },
         {
-          "collected_at_kst": "2026-06-18T09:00:32+09:00",
+          "collected_at_kst": "2026-06-19T09:00:28+09:00",
           "source": "danawa",
           "brand": "Bodyfriend",
-          "query": "바디프렌드 마사지기",
+          "query": "바디프렌드 팔콘",
           "rank": "8",
-          "title": "퍼스트로 바디 프랜드안마의자 원목 두피 바디 괄사 마사지기 두피 마사지기",
-          "url": "https://prod.danawa.com/bridge/go_link_goods.php?cate_c1=1824&cate_c2=228109&cate_c3=228796&cate_c4=231544&cmpny_c=ED908&link_prod_c=1126257677&keyword=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%EB%A7%88%EC%82%AC%EC%A7%80%EA%B8%B0&r=17817408628254&cate=1834164",
-          "price": "13510",
+          "title": "바디 프랜드(bodyfriend) [상품권10만] 뉴 팔콘 다이아데님 헬스케어로봇 안마의자 / 새제품 무상AS 5년",
+          "url": "https://prod.danawa.com/bridge/go_link_goods.php?cate_c1=10840&cate_c2=223834&cate_c3=223894&cate_c4=0&cmpny_c=ED909&link_prod_c=2084748681&keyword=%EB%B0%94%EB%94%94%ED%94%84%EB%A0%8C%EB%93%9C+%ED%8C%94%EC%BD%98&r=17818272656441&cate=17225872",
+          "price": "3300000",
           "rating": "",
           "review_count": ""
         }
@@ -112,100 +112,100 @@
       "product_count": 25,
       "avg_rating": null,
       "total_review_count": 0,
-      "avg_price": 262532,
+      "avg_price": 259998,
       "top_products": [
         {
-          "collected_at_kst": "2026-06-18T09:00:32+09:00",
+          "collected_at_kst": "2026-06-19T09:00:28+09:00",
           "source": "danawa",
           "brand": "Zespa",
           "query": "제스파 종아리 마사지기",
           "rank": "1",
-          "title": "제스파 더툴 450 에어진 무선 종아리 마사지기 ZP5679 라이트그레이",
-          "url": "https://prod.danawa.com/bridge/go_link_goods.php?cate_c1=10840&cate_c2=223834&cate_c3=223897&cate_c4=224149&cmpny_c=TP40F&link_prod_c=V91915994006&keyword=%EC%A0%9C%EC%8A%A4%ED%8C%8C+%EC%A2%85%EC%95%84%EB%A6%AC+%EB%A7%88%EC%82%AC%EC%A7%80%EA%B8%B0&r=17817408468499&cate=17236106",
-          "price": "294300",
-          "rating": "",
-          "review_count": ""
-        },
-        {
-          "collected_at_kst": "2026-06-18T09:00:32+09:00",
-          "source": "danawa",
-          "brand": "Zespa",
-          "query": "제스파 종아리 마사지기",
-          "rank": "2",
-          "title": "제스파 더툴 450 에어진 무선 종아리 마사지기 ZP5677 ZP5675 라이트퍼플",
-          "url": "https://prod.danawa.com/bridge/go_link_goods.php?cate_c1=10840&cate_c2=223834&cate_c3=223897&cate_c4=224149&cmpny_c=TP40F&link_prod_c=V91916071475&keyword=%EC%A0%9C%EC%8A%A4%ED%8C%8C+%EC%A2%85%EC%95%84%EB%A6%AC+%EB%A7%88%EC%82%AC%EC%A7%80%EA%B8%B0&r=17817408462849&cate=17236106",
+          "title": "제스파 더툴 450 에어진 무선 종아리 마사지기 ZP5677 zp-5678 Sky blue",
+          "url": "https://prod.danawa.com/bridge/go_link_goods.php?cate_c1=10840&cate_c2=223834&cate_c3=223897&cate_c4=224149&cmpny_c=TP40F&link_prod_c=V91916044388&keyword=%EC%A0%9C%EC%8A%A4%ED%8C%8C+%EC%A2%85%EC%95%84%EB%A6%AC+%EB%A7%88%EC%82%AC%EC%A7%80%EA%B8%B0&r=17818272458588&cate=17236106",
           "price": "304300",
           "rating": "",
           "review_count": ""
         },
         {
-          "collected_at_kst": "2026-06-18T09:00:32+09:00",
+          "collected_at_kst": "2026-06-19T09:00:28+09:00",
           "source": "danawa",
           "brand": "Zespa",
           "query": "제스파 종아리 마사지기",
-          "rank": "3",
-          "title": "제스파 오프더레그핏 레그라이너 종아리 발 마사지기 ZP2988 혼합색상",
-          "url": "https://prod.danawa.com/bridge/go_link_goods.php?cate_c1=10840&cate_c2=223834&cate_c3=223897&cate_c4=224149&cmpny_c=TP40F&link_prod_c=V95231894402&keyword=%EC%A0%9C%EC%8A%A4%ED%8C%8C+%EC%A2%85%EC%95%84%EB%A6%AC+%EB%A7%88%EC%82%AC%EC%A7%80%EA%B8%B0&r=17817408461336&cate=17236106",
-          "price": "360400",
+          "rank": "2",
+          "title": "제스파 더툴 450 에어진 무선 종아리 마사지기 ZP5677 zp-5678 Sky blue",
+          "url": "https://prod.danawa.com/bridge/go_link_goods.php?cate_c1=10840&cate_c2=223834&cate_c3=223897&cate_c4=224149&cmpny_c=TP40F&link_prod_c=V91916044280&keyword=%EC%A0%9C%EC%8A%A4%ED%8C%8C+%EC%A2%85%EC%95%84%EB%A6%AC+%EB%A7%88%EC%82%AC%EC%A7%80%EA%B8%B0&r=17818272452693&cate=17236106",
+          "price": "304300",
           "rating": "",
           "review_count": ""
         },
         {
-          "collected_at_kst": "2026-06-18T09:00:32+09:00",
+          "collected_at_kst": "2026-06-19T09:00:28+09:00",
+          "source": "danawa",
+          "brand": "Zespa",
+          "query": "제스파 종아리 마사지기",
+          "rank": "3",
+          "title": "제스파 더툴 450 에어진 무선 종아리 마사지기 ZP5677 zp-5678 Sky blue",
+          "url": "https://prod.danawa.com/bridge/go_link_goods.php?cate_c1=10840&cate_c2=223834&cate_c3=223897&cate_c4=224149&cmpny_c=TP40F&link_prod_c=V91916044295&keyword=%EC%A0%9C%EC%8A%A4%ED%8C%8C+%EC%A2%85%EC%95%84%EB%A6%AC+%EB%A7%88%EC%82%AC%EC%A7%80%EA%B8%B0&r=17818272453067&cate=17236106",
+          "price": "304300",
+          "rating": "",
+          "review_count": ""
+        },
+        {
+          "collected_at_kst": "2026-06-19T09:00:28+09:00",
           "source": "danawa",
           "brand": "Zespa",
           "query": "제스파 종아리 마사지기",
           "rank": "4",
-          "title": "제스파 레그더슬림 두드림 공기압 종아리 발 마사지기 ZP4366 혼합색상",
-          "url": "https://prod.danawa.com/bridge/go_link_goods.php?cate_c1=10840&cate_c2=223834&cate_c3=223897&cate_c4=224149&cmpny_c=TP40F&link_prod_c=V91915532255&keyword=%EC%A0%9C%EC%8A%A4%ED%8C%8C+%EC%A2%85%EC%95%84%EB%A6%AC+%EB%A7%88%EC%82%AC%EC%A7%80%EA%B8%B0&r=17817408462660&cate=17236106",
-          "price": "486400",
+          "title": "제스파 더툴 450 에어진 무선 종아리 마사지기 ZP5677 zp-5678 Sky blue",
+          "url": "https://prod.danawa.com/bridge/go_link_goods.php?cate_c1=10840&cate_c2=223834&cate_c3=223897&cate_c4=224149&cmpny_c=TP40F&link_prod_c=V91916044333&keyword=%EC%A0%9C%EC%8A%A4%ED%8C%8C+%EC%A2%85%EC%95%84%EB%A6%AC+%EB%A7%88%EC%82%AC%EC%A7%80%EA%B8%B0&r=17818272452143&cate=17236106",
+          "price": "304300",
           "rating": "",
           "review_count": ""
         },
         {
-          "collected_at_kst": "2026-06-18T09:00:32+09:00",
+          "collected_at_kst": "2026-06-19T09:00:28+09:00",
           "source": "danawa",
           "brand": "Zespa",
           "query": "제스파 종아리 마사지기",
           "rank": "5",
-          "title": "제스파 칼 무선 종아리 마사지기 공기압 온열 다리 안마기 ZP5443 2p ZP5443(그레이혼합) Soft gray(그레이)",
-          "url": "https://prod.danawa.com/bridge/go_link_goods.php?cate_c1=10840&cate_c2=223834&cate_c3=223897&cate_c4=224149&cmpny_c=TP40F&link_prod_c=V94579224206&keyword=%EC%A0%9C%EC%8A%A4%ED%8C%8C+%EC%A2%85%EC%95%84%EB%A6%AC+%EB%A7%88%EC%82%AC%EC%A7%80%EA%B8%B0&r=17817408462418&cate=17236106",
-          "price": "218740",
+          "title": "제스파 더툴 450 에어진 무선 종아리 마사지기 ZP5677 zp-5678 Sky blue",
+          "url": "https://prod.danawa.com/bridge/go_link_goods.php?cate_c1=10840&cate_c2=223834&cate_c3=223897&cate_c4=224149&cmpny_c=TP40F&link_prod_c=V91916044460&keyword=%EC%A0%9C%EC%8A%A4%ED%8C%8C+%EC%A2%85%EC%95%84%EB%A6%AC+%EB%A7%88%EC%82%AC%EC%A7%80%EA%B8%B0&r=17818272458331&cate=17236106",
+          "price": "304300",
           "rating": "",
           "review_count": ""
         },
         {
-          "collected_at_kst": "2026-06-18T09:00:32+09:00",
+          "collected_at_kst": "2026-06-19T09:00:28+09:00",
           "source": "danawa",
           "brand": "Zespa",
           "query": "Zespa massager",
           "rank": "1",
-          "title": "제스파 맥스 롤링 프로 의자형 안마기 + 이지릴렉스 체어 세트 ZP855(마사져) ZP1995(체어) 혼합색상",
-          "url": "https://prod.danawa.com/bridge/go_link_goods.php?cate_c1=10840&cate_c2=223834&cate_c3=223903&cate_c4=224155&cmpny_c=TP40F&link_prod_c=V93875404558&keyword=Zespa+massager&r=17817408507257&cate=17236129",
-          "price": "442000",
+          "title": "(주)제스파OEM 제스파 올인원 파워마사져 프리미엄 안마기 ZP712 의자별도구매가능",
+          "url": "https://prod.danawa.com/bridge/go_link_goods.php?cate_c1=10840&cate_c2=223834&cate_c3=223894&cate_c4=0&cmpny_c=TJ418&link_prod_c=0013774394&keyword=Zespa+massager&r=17818272487554&cate=17225872",
+          "price": "59000",
           "rating": "",
           "review_count": ""
         },
         {
-          "collected_at_kst": "2026-06-18T09:00:32+09:00",
+          "collected_at_kst": "2026-06-19T09:00:28+09:00",
           "source": "danawa",
           "brand": "Zespa",
           "query": "Zespa massager",
           "rank": "2",
-          "title": "제스파 에어핑거 무선 온열 손마사지기 (빠른배송)Zp2592/massager(정식) 단일(White Silver)",
-          "url": "https://prod.danawa.com/bridge/go_link_goods.php?cate_c1=10840&cate_c2=223834&cate_c3=223912&cate_c4=224164&cmpny_c=TP40F&link_prod_c=V94898921576&keyword=Zespa+massager&r=17817408501973&cate=17236126",
-          "price": "91500",
+          "title": "(주)제스파OEM [제스파] 스위트백 마사져 ZP3000",
+          "url": "https://prod.danawa.com/bridge/go_link_goods.php?cate_c1=10840&cate_c2=223834&cate_c3=0&cate_c4=0&cmpny_c=ED908&link_prod_c=30505362&keyword=Zespa+massager&r=17818272482608",
+          "price": "94000",
           "rating": "",
           "review_count": ""
         },
         {
-          "collected_at_kst": "2026-06-18T09:00:32+09:00",
+          "collected_at_kst": "2026-06-19T09:00:28+09:00",
           "source": "danawa",
           "brand": "Zespa",
           "query": "Zespa massager",
           "rank": "3",
           "title": "제스파 에어핑거 무선 온열 손마사지기 (빠른배송)Zp2592/massager(정식) 단일(White Silver)",
-          "url": "https://prod.danawa.com/bridge/go_link_goods.php?cate_c1=10840&cate_c2=223834&cate_c3=223912&cate_c4=224164&cmpny_c=TP40F&link_prod_c=V94898921573&keyword=Zespa+massager&r=17817408507479&cate=17236126",
+          "url": "https://prod.danawa.com/bridge/go_link_goods.php?cate_c1=10840&cate_c2=223834&cate_c3=223912&cate_c4=224164&cmpny_c=TP40F&link_prod_c=V94898921576&keyword=Zespa+massager&r=17818272485685&cate=17236126",
           "price": "91500",
           "rating": "",
           "review_count": ""
@@ -215,7 +215,7 @@
   },
   "channels": {
     "danawa": {
-      "product_count": 85,
+      "product_count": 65,
       "total_review_count": 0,
       "brands": [
         "Bodyfriend",
@@ -224,30 +224,27 @@
       "queries": [
         "Zespa massager",
         "바디프랜드 팔콘",
-        "바디프렌드 마사지기",
         "바디프렌드 팔콘",
         "제스파 종아리 마사지기"
       ]
     }
   },
   "keywords": {
-    "AS": 56,
-    "안마의자": 47,
-    "팔콘": 41,
-    "종아리": 13,
-    "발": 10,
-    "온열": 9,
-    "무선": 9,
+    "AS": 46,
+    "팔콘": 38,
+    "안마의자": 34,
+    "무선": 8,
+    "종아리": 7,
+    "온열": 4,
     "배송": 4,
-    "공기압": 2,
-    "목": 2,
-    "어깨": 1
+    "발": 2,
+    "프리미엄": 1
   },
   "source_status": {
-    "updated_at_kst": "2026-06-18T09:01:58+09:00",
+    "updated_at_kst": "2026-06-19T09:01:52+09:00",
     "sources": [
       {
-        "checked_at_kst": "2026-06-18T09:00:35+09:00",
+        "checked_at_kst": "2026-06-19T09:00:31+09:00",
         "source": "danawa",
         "brand": "Zespa",
         "query": "제스파 안마기",
@@ -261,7 +258,7 @@
         "error": ""
       },
       {
-        "checked_at_kst": "2026-06-18T09:00:38+09:00",
+        "checked_at_kst": "2026-06-19T09:00:35+09:00",
         "source": "danawa",
         "brand": "Zespa",
         "query": "제스파 마사지기",
@@ -275,7 +272,7 @@
         "error": ""
       },
       {
-        "checked_at_kst": "2026-06-18T09:00:42+09:00",
+        "checked_at_kst": "2026-06-19T09:00:39+09:00",
         "source": "danawa",
         "brand": "Zespa",
         "query": "제스파 목 어깨 마사지기",
@@ -289,7 +286,7 @@
         "error": ""
       },
       {
-        "checked_at_kst": "2026-06-18T09:00:45+09:00",
+        "checked_at_kst": "2026-06-19T09:00:42+09:00",
         "source": "danawa",
         "brand": "Zespa",
         "query": "제스파 발마사지기",
@@ -303,7 +300,7 @@
         "error": ""
       },
       {
-        "checked_at_kst": "2026-06-18T09:00:48+09:00",
+        "checked_at_kst": "2026-06-19T09:00:46+09:00",
         "source": "danawa",
         "brand": "Zespa",
         "query": "제스파 종아리 마사지기",
@@ -317,7 +314,7 @@
         "error": ""
       },
       {
-        "checked_at_kst": "2026-06-18T09:00:51+09:00",
+        "checked_at_kst": "2026-06-19T09:00:49+09:00",
         "source": "danawa",
         "brand": "Zespa",
         "query": "Zespa massager",
@@ -331,7 +328,7 @@
         "error": ""
       },
       {
-        "checked_at_kst": "2026-06-18T09:00:55+09:00",
+        "checked_at_kst": "2026-06-19T09:00:54+09:00",
         "source": "danawa",
         "brand": "Bodyfriend",
         "query": "바디프렌드 안마기",
@@ -345,7 +342,7 @@
         "error": ""
       },
       {
-        "checked_at_kst": "2026-06-18T09:01:00+09:00",
+        "checked_at_kst": "2026-06-19T09:00:58+09:00",
         "source": "danawa",
         "brand": "Bodyfriend",
         "query": "바디프렌드 안마의자",
@@ -359,7 +356,7 @@
         "error": ""
       },
       {
-        "checked_at_kst": "2026-06-18T09:01:03+09:00",
+        "checked_at_kst": "2026-06-19T09:01:02+09:00",
         "source": "danawa",
         "brand": "Bodyfriend",
         "query": "바디프렌드 마사지기",
@@ -369,11 +366,11 @@
         "method": "httpx",
         "http_status": 200,
         "blocked": false,
-        "rows_found": 20,
+        "rows_found": 0,
         "error": ""
       },
       {
-        "checked_at_kst": "2026-06-18T09:01:07+09:00",
+        "checked_at_kst": "2026-06-19T09:01:06+09:00",
         "source": "danawa",
         "brand": "Bodyfriend",
         "query": "바디프렌드 팔콘",
@@ -387,7 +384,7 @@
         "error": ""
       },
       {
-        "checked_at_kst": "2026-06-18T09:01:10+09:00",
+        "checked_at_kst": "2026-06-19T09:01:09+09:00",
         "source": "danawa",
         "brand": "Bodyfriend",
         "query": "바디프렌드 안마의자 추천",
@@ -401,7 +398,7 @@
         "error": ""
       },
       {
-        "checked_at_kst": "2026-06-18T09:01:14+09:00",
+        "checked_at_kst": "2026-06-19T09:01:12+09:00",
         "source": "danawa",
         "brand": "Bodyfriend",
         "query": "바디프랜드 안마의자",
@@ -415,7 +412,7 @@
         "error": ""
       },
       {
-        "checked_at_kst": "2026-06-18T09:01:17+09:00",
+        "checked_at_kst": "2026-06-19T09:01:16+09:00",
         "source": "danawa",
         "brand": "Bodyfriend",
         "query": "바디프랜드 팔콘",
@@ -429,7 +426,7 @@
         "error": ""
       },
       {
-        "checked_at_kst": "2026-06-18T09:01:20+09:00",
+        "checked_at_kst": "2026-06-19T09:01:20+09:00",
         "source": "danawa",
         "brand": "Bodyfriend",
         "query": "Bodyfriend massage chair",
@@ -443,7 +440,7 @@
         "error": ""
       },
       {
-        "checked_at_kst": "2026-06-18T09:01:22+09:00",
+        "checked_at_kst": "2026-06-19T09:01:21+09:00",
         "source": "naver_shopping",
         "brand": "Zespa",
         "query": "제스파 안마기",
@@ -457,7 +454,7 @@
         "error": "blocked_or_challenge"
       },
       {
-        "checked_at_kst": "2026-06-18T09:01:23+09:00",
+        "checked_at_kst": "2026-06-19T09:01:22+09:00",
         "source": "naver_shopping",
         "brand": "Zespa",
         "query": "제스파 마사지기",
@@ -471,7 +468,7 @@
         "error": "blocked_or_challenge"
       },
       {
-        "checked_at_kst": "2026-06-18T09:01:24+09:00",
+        "checked_at_kst": "2026-06-19T09:01:23+09:00",
         "source": "naver_shopping",
         "brand": "Zespa",
         "query": "제스파 목 어깨 마사지기",
@@ -485,7 +482,7 @@
         "error": "blocked_or_challenge"
       },
       {
-        "checked_at_kst": "2026-06-18T09:01:25+09:00",
+        "checked_at_kst": "2026-06-19T09:01:24+09:00",
         "source": "naver_shopping",
         "brand": "Zespa",
         "query": "제스파 발마사지기",
@@ -499,7 +496,7 @@
         "error": "blocked_or_challenge"
       },
       {
-        "checked_at_kst": "2026-06-18T09:01:26+09:00",
+        "checked_at_kst": "2026-06-19T09:01:25+09:00",
         "source": "naver_shopping",
         "brand": "Zespa",
         "query": "제스파 종아리 마사지기",
@@ -513,7 +510,7 @@
         "error": "blocked_or_challenge"
       },
       {
-        "checked_at_kst": "2026-06-18T09:01:27+09:00",
+        "checked_at_kst": "2026-06-19T09:01:26+09:00",
         "source": "naver_shopping",
         "brand": "Zespa",
         "query": "Zespa massager",
@@ -527,7 +524,7 @@
         "error": "blocked_or_challenge"
       },
       {
-        "checked_at_kst": "2026-06-18T09:01:28+09:00",
+        "checked_at_kst": "2026-06-19T09:01:28+09:00",
         "source": "naver_shopping",
         "brand": "Bodyfriend",
         "query": "바디프렌드 안마기",
@@ -541,7 +538,7 @@
         "error": "blocked_or_challenge"
       },
       {
-        "checked_at_kst": "2026-06-18T09:01:29+09:00",
+        "checked_at_kst": "2026-06-19T09:01:29+09:00",
         "source": "naver_shopping",
         "brand": "Bodyfriend",
         "query": "바디프렌드 안마의자",
@@ -555,7 +552,7 @@
         "error": "blocked_or_challenge"
       },
       {
-        "checked_at_kst": "2026-06-18T09:01:30+09:00",
+        "checked_at_kst": "2026-06-19T09:01:30+09:00",
         "source": "naver_shopping",
         "brand": "Bodyfriend",
         "query": "바디프렌드 마사지기",
@@ -569,7 +566,7 @@
         "error": "blocked_or_challenge"
       },
       {
-        "checked_at_kst": "2026-06-18T09:01:32+09:00",
+        "checked_at_kst": "2026-06-19T09:01:31+09:00",
         "source": "naver_shopping",
         "brand": "Bodyfriend",
         "query": "바디프렌드 팔콘",
@@ -583,7 +580,7 @@
         "error": "blocked_or_challenge"
       },
       {
-        "checked_at_kst": "2026-06-18T09:01:33+09:00",
+        "checked_at_kst": "2026-06-19T09:01:32+09:00",
         "source": "naver_shopping",
         "brand": "Bodyfriend",
         "query": "바디프렌드 안마의자 추천",
@@ -597,7 +594,7 @@
         "error": "blocked_or_challenge"
       },
       {
-        "checked_at_kst": "2026-06-18T09:01:34+09:00",
+        "checked_at_kst": "2026-06-19T09:01:33+09:00",
         "source": "naver_shopping",
         "brand": "Bodyfriend",
         "query": "바디프랜드 안마의자",
@@ -611,7 +608,7 @@
         "error": "blocked_or_challenge"
       },
       {
-        "checked_at_kst": "2026-06-18T09:01:35+09:00",
+        "checked_at_kst": "2026-06-19T09:01:34+09:00",
         "source": "naver_shopping",
         "brand": "Bodyfriend",
         "query": "바디프랜드 팔콘",
@@ -625,7 +622,7 @@
         "error": "blocked_or_challenge"
       },
       {
-        "checked_at_kst": "2026-06-18T09:01:36+09:00",
+        "checked_at_kst": "2026-06-19T09:01:36+09:00",
         "source": "naver_shopping",
         "brand": "Bodyfriend",
         "query": "Bodyfriend massage chair",
@@ -639,7 +636,7 @@
         "error": "blocked_or_challenge"
       },
       {
-        "checked_at_kst": "2026-06-18T09:01:37+09:00",
+        "checked_at_kst": "2026-06-19T09:01:37+09:00",
         "source": "coupang",
         "brand": "Zespa",
         "query": "제스파 안마기",
@@ -653,7 +650,7 @@
         "error": "blocked_or_challenge"
       },
       {
-        "checked_at_kst": "2026-06-18T09:01:38+09:00",
+        "checked_at_kst": "2026-06-19T09:01:38+09:00",
         "source": "coupang",
         "brand": "Zespa",
         "query": "제스파 마사지기",
@@ -667,7 +664,7 @@
         "error": "blocked_or_challenge"
       },
       {
-        "checked_at_kst": "2026-06-18T09:01:39+09:00",
+        "checked_at_kst": "2026-06-19T09:01:39+09:00",
         "source": "coupang",
         "brand": "Zespa",
         "query": "제스파 목 어깨 마사지기",
@@ -681,7 +678,7 @@
         "error": "blocked_or_challenge"
       },
       {
-        "checked_at_kst": "2026-06-18T09:01:41+09:00",
+        "checked_at_kst": "2026-06-19T09:01:40+09:00",
         "source": "coupang",
         "brand": "Zespa",
         "query": "제스파 발마사지기",
@@ -695,7 +692,7 @@
         "error": "blocked_or_challenge"
       },
       {
-        "checked_at_kst": "2026-06-18T09:01:42+09:00",
+        "checked_at_kst": "2026-06-19T09:01:41+09:00",
         "source": "coupang",
         "brand": "Zespa",
         "query": "제스파 종아리 마사지기",
@@ -709,7 +706,7 @@
         "error": "blocked_or_challenge"
       },
       {
-        "checked_at_kst": "2026-06-18T09:01:43+09:00",
+        "checked_at_kst": "2026-06-19T09:01:42+09:00",
         "source": "coupang",
         "brand": "Zespa",
         "query": "Zespa massager",
@@ -723,7 +720,7 @@
         "error": "blocked_or_challenge"
       },
       {
-        "checked_at_kst": "2026-06-18T09:01:44+09:00",
+        "checked_at_kst": "2026-06-19T09:01:43+09:00",
         "source": "coupang",
         "brand": "Bodyfriend",
         "query": "바디프렌드 안마기",
@@ -737,7 +734,7 @@
         "error": "blocked_or_challenge"
       },
       {
-        "checked_at_kst": "2026-06-18T09:01:45+09:00",
+        "checked_at_kst": "2026-06-19T09:01:45+09:00",
         "source": "coupang",
         "brand": "Bodyfriend",
         "query": "바디프렌드 안마의자",
@@ -751,7 +748,7 @@
         "error": "blocked_or_challenge"
       },
       {
-        "checked_at_kst": "2026-06-18T09:01:46+09:00",
+        "checked_at_kst": "2026-06-19T09:01:46+09:00",
         "source": "coupang",
         "brand": "Bodyfriend",
         "query": "바디프렌드 마사지기",
@@ -765,7 +762,7 @@
         "error": "blocked_or_challenge"
       },
       {
-        "checked_at_kst": "2026-06-18T09:01:47+09:00",
+        "checked_at_kst": "2026-06-19T09:01:47+09:00",
         "source": "coupang",
         "brand": "Bodyfriend",
         "query": "바디프렌드 팔콘",
@@ -779,7 +776,7 @@
         "error": "blocked_or_challenge"
       },
       {
-        "checked_at_kst": "2026-06-18T09:01:53+09:00",
+        "checked_at_kst": "2026-06-19T09:01:48+09:00",
         "source": "coupang",
         "brand": "Bodyfriend",
         "query": "바디프렌드 안마의자 추천",
@@ -793,7 +790,7 @@
         "error": "blocked_or_challenge"
       },
       {
-        "checked_at_kst": "2026-06-18T09:01:55+09:00",
+        "checked_at_kst": "2026-06-19T09:01:49+09:00",
         "source": "coupang",
         "brand": "Bodyfriend",
         "query": "바디프랜드 안마의자",
@@ -807,7 +804,7 @@
         "error": "blocked_or_challenge"
       },
       {
-        "checked_at_kst": "2026-06-18T09:01:56+09:00",
+        "checked_at_kst": "2026-06-19T09:01:50+09:00",
         "source": "coupang",
         "brand": "Bodyfriend",
         "query": "바디프랜드 팔콘",
@@ -821,7 +818,7 @@
         "error": "blocked_or_challenge"
       },
       {
-        "checked_at_kst": "2026-06-18T09:01:57+09:00",
+        "checked_at_kst": "2026-06-19T09:01:51+09:00",
         "source": "coupang",
         "brand": "Bodyfriend",
         "query": "Bodyfriend massage chair",
